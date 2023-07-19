@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/css/pie.css" >
+    <link rel="stylesheet" href="/css/total.css" >
+    <link rel="stylesheet" href="/layui/css/layui.css"    media="all">
+    <link  rel="stylesheet" type="text/css" href="/css/bootstrap.css"></link>
+    <link  rel="stylesheet" type="text/css" href="/css/style.css"></link>
+    <script type="text/javascript" src="/js/jquery-1.12.4.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.js" ></script>
+    <script type="text/javascript" src="/layui/layui.js" ></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.2/dist/echarts.min.js"></script>
+    <title>去向信息列表</title>
+</head>
+<body>
+<div class=".container" style="padding:20px">
+    <form class="form-inline" id="condition">
+        <div class="form-group col-md-2 col-sm-2">
+            <label for="grade">毕业年份:</label>
+<!--            <input style="width: 60px" type="text" class="form-control " id="grade" name="grade" placeholder="2023" value="2023">-->
+            <select id="grade" class="form-control" name="grade">
+                <option value="2030">2030</option>
+                <option value="2029">2029</option>
+                <option value="2029">2029</option>
+                <option value="2027">2027</option>
+                <option value="2026">2026</option>
+                <option value="2025">2025</option>
+                <option value="2024">2024</option>
+                <option value="2023" selected>2023</option>
+                <option value="2022">2022</option>
+                <option value="2021">2021</option>
+                <option value="2020">2020</option>
+                <option value="2019">2019</option>
+                <option value="2018">2018</option>
+                <option value="2017">2017</option>
+                <option value="2016">2016</option>
+                <option value="2015">2015</option>
+            </select>
+        </div>
+        <div class="form-group col-md-3 col-sm-3">
+            <label for="college">学院:</label>
+            <select style="width: auto" class="form-control" id="college" name="college">
+
+            </select>
+        </div>
+        <div class=" col-md-3 col-sm-3">
+            <label for="college">专业:</label>
+            <select style="width: auto" class="form-control" id="major" name="major">
+
+            </select>
+        </div>
+        <div class=" col-md-3 col-sm-3">
+            <label for="college">是否省内</label>
+            <select style="width: auto" class="form-control" id="isInProvince" name="isInProvince">
+                <option value="-1">选择是否省内</option>
+                <option value="0">否</option>
+                <option value="1">是</option>
+            </select>
+        </div>
+        <div class="form-group col-md-1 col-sm-1">
+            <button id="statistic" type="button" class="btn btn-info" onclick="statistics()">统计</button>
+        </div>
+
+    </form>
+    <div id="body">
+        <div class="col-md-7 col-sm-7" id="rate" style=" height: 400px;padding-top: 20px" ></div>
+        <div class="col-md-5 col-sm-5" id="count" style=" height: 400px;padding-top: 20px"></div>
+        <div class="col-md-4 col-sm-6" id="countByDFC" style=" height: 400px;padding-top: 20px;"></div>
+        <div class="col-md-4 col-sm-6" id="countByCrossExam" style=" height: 400px;padding-top: 20px; "></div>
+        <div class="col-md-4 col-sm-6" id="countByCompanyType" style=" height: 400px;padding-top: 20px;"></div>
+
+    </div>
+
+</div>
+<script>
+    var chartDom_rate = document.getElementById('rate');
+    var myChart_rate = echarts.init(chartDom_rate);
+    var option_rate;
+    var chartDom_count = document.getElementById('count');
+    var myChart_count = echarts.init(chartDom_count);
+    var option_count;
+    var chartDom_DFC = document.getElementById('countByDFC');
+    var myChart_DFC = echarts.init(chartDom_DFC);
+    var option_DFC;
+    var chartDom_CE = document.getElementById('countByCrossExam');
+    var myChart_CE = echarts.init(chartDom_CE);
+    var option_CE;
+    var chartDom_CT = document.getElementById('countByCompanyType');
+    var myChart_CT = echarts.init(chartDom_CT);
+    var option_CT;
+
+
+</script>
+</body>
+<script>
+    $(function (){
+        isValid();
+        loadMajor();
+        loadCollege();
+        statistics();
+    })
+    $(document).keydown(function(event){
+        if(event.keyCode==13){
+            document.getElementById("statistic").click();
+        }
+    });
+    function isValid() {
+        if(sessionStorage["role"]!="manager"){
+            location.href=('/pages/manager/illegal.html');
+        }
+    }
+    function loadRate(rateData, totalRate){
+        option_rate = {
+            title: [
+                {
+                text: '就业率统计',
+                // subtext: 'Fake Data',
+                left: 'center'
+                },
+                {
+                    subtext: '就业率为'+parseInt(totalRate*100)+'%',
+                    left: '50%',
+                    top: '85%',
+                    textAlign: 'center'
+                }
+            ],
+            tooltip: {
+                trigger: 'item'
+            },
+            legend: {
+                orient: 'vertical',
+                left: 'left'
+            },
+            series: [
+                {
+                    // name: 'Access From',
+                    type: 'pie',
+                    radius: '50%',
+                    data: rateData,
+                    emphasis: {
+                        itemStyle: {
+                            shadowBlur: 10,
+                            shadowOffsetX: 0,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
+                    }
+                }
+            ]
+        };
+        option_rate && myChart_rate.setOption(option_rate);
+    }
+    function loadCount(countData_x, countData_y, total) {
+        option_count = {
+            title: [{
+                text: '就业人数统计',
+                // subtext: 'Fake Data',
+                left: 'center'
+            },
+                {
+                    subtext: '总人数为'+total,
+                    left: '50%',
+                    top: '5%',
+                    textAlign: 'center'
+                }
+            ],
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'shadow'
+                }
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            xAxis: [
+                {
+                    type: 'category',
+                    data: countData_x,
+                    axisTick: {
+                        alignWithLabel: true,
+                        interval:0,
+                    }
+                }
+            ],
+            yAxis: [
+                {
+                    type: 'value'
+                }
+            ],
+            series: [
+                {
+                    // name: 'Direct',
+                    type: 'bar',
+                    barWidth: '60%',
+                    data: countData_y,
+                }
+            ]
+        };
+        option_count && myChart_count.setOption(option_count);
+    }
+
+    function loadCountOfCT(countOfCTData_x, countOfCTData_y, totalOfCT) {
+        option_CT = {
+            color:"#67E300",
+            title: [{
+                text: '工作所在企业类型',
+                // subtext: 'Fake Data',
+                left: 'center'
+            },
+                {
+                    subtext: '劳动合同就业或其他录用形式就业总人数为'+totalOfCT,
+                    left: '50%',
+                    top: '5%',
+                    textAlign: 'center'
+                }
+            ],
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'shadow'
+                }
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            xAxis: [
+                {
+                    type: 'category',
+                    data: countOfCTData_x,
+                    axisTick: {
+                        alignWithLabel: true,
+                        interval:0,
+                    }
+                }
+            ],
+            yAxis: [
+                {
+                    type: 'value'
+                }
+            ],
+            series: [
+                {
+                    // name: 'Direct',
+                    type: 'bar',
+                    barWidth: '60%',
+                    data: countOfCTData_y,
+                }
+            ]
+        };
+        option_CT && myChart_CT.setOption(option_CT);
+    }
+    function loadDFC(DFCData, NDFCData, totalOfEnrollment){
+        option_DFC = {
+            title: [
+                {
+                    text: '升学情况--双一流',
+                    // subtext: 'Fake Data',
+                    left: 'center'
+                },
+                {
+                    subtext: '升学总人数为：'+totalOfEnrollment,
+                    left: '50%',
+                    top: '85%',
+                    textAlign: 'center'
+                }
+            ],
+            color:["#4E10AE", "#FFE400"],
+            tooltip: {
+                trigger: 'item'
+            },
+            legend: {
+                orient: 'vertical',
+                left: 'left'
+            },
+            series: [
+                {
+                    // name: 'Access From',
+                    type: 'pie',
+                    radius: '50%',
+                    data:[
+                        {value:DFCData, name: "双一流院校"},
+                        {value:NDFCData, name:"普通院校"}
+                    ] ,
+                    emphasis: {
+                        itemStyle: {
+                            shadowBlur: 10,
+                            shadowOffsetX: 0,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
+                    }
+                }
+            ]
+        };
+        option_DFC && myChart_DFC.setOption(option_DFC);
+    }
+    function loadCE(CEData, NCEData){
+        option_CE = {
+            title: [
+                {
+                    text: '升学情况--跨考',
+                    // subtext: 'Fake Data',
+                    left: 'center'
+                },
+                {
+                    subtext: '升学总人数为：'+(CEData+NCEData),
+                    left: '50%',
+                    top: '85%',
+                    textAlign: 'center'
+                }
+            ],
+            color:["#4cabce", "#e5323e"],
+            tooltip: {
+                trigger: 'item'
+            },
+            legend: {
+                orient: 'vertical',
+                left: 'left'
+            },
+            series: [
+                {
+                    // name: 'Access From',
+                    type: 'pie',
+                    radius: '50%',
+                    data:[
+                        {value:CEData, name: "跨考人数"},
+                        {value:NCEData, name:"本专业人数"}
+                    ] ,
+                    emphasis: {
+                        itemStyle: {
+                            shadowBlur: 10,
+                            shadowOffsetX: 0,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
+                    }
+                }
+            ]
+        };
+        option_CE && myChart_CE.setOption(option_CE);
+    }
+    // }
+    function statistics() {
+        let gradeReg=/^\d{4}$/;
+        let grade=$("#grade").val();
+        if(!gradeReg.test(grade)){
+            layer.alert('毕业年份格式错误，请检查',{icon:2});
+            return ;
+        }
+        $.ajax({
+            type: "GET",
+            url: "/graduate/rate",
+            data: $("#condition").serialize(),
+            dataType:"json",
+            success: function(vo){
+                let obj=vo.obj;
+                let rateData = new Array();
+                let countData_x = new Array();
+                let countData_y = new Array();
+                let totalRate=0;
+                let countOfCT_x = new Array();
+                let countOfCT_y = new Array();
+                let totalOfCT=0;
+
+                for (let key in obj.count) {
+                    countData_x.push(key);
+                    countData_y.push(obj.count[key]);
+                }
+                for(let key in obj.rate){
+                    let temp={value: obj.rate[key], name: key}
+                    if(key!='未就业' && key!='待定')totalRate+=obj.rate[key];
+                    rateData.push(temp);
+                }
+                for(let key in obj.countByCompanyType){
+                    countOfCT_x.push(key);
+                    countOfCT_y.push(obj.countByCompanyType[key]);
+                    totalOfCT+=obj.countByCompanyType[key];
+                }
+                loadCountOfCT(countOfCT_x, countOfCT_y, totalOfCT);
+                loadCE(obj.countOfCE, obj.countOfNCE);
+                loadRate(rateData, totalRate);
+                loadCount(countData_x, countData_y, obj.total);
+                loadDFC(obj.countOfDFC, obj.countOfNDFC, obj.countOfDFC+obj.countOfNDFC);
+            },
+            error:function(e){
+                layer.alert('学生数量为0，请更改统计条件',{icon:2});
+            }
+        });
+    }
+    function loadMajor(){
+        $.ajax({
+            type: "GET",
+            url: "/major/all",
+            data: null,
+            dataType:"json",
+            success: function(vo){
+                let list=vo.list;
+                let str="";
+                str+='<option value="0" selected>请选择专业</option>';
+                for(let i=0;i<list.length;i++){
+                    str+='<option value="'+list[i].id+'">'+list[i].major+'</option>';
+                }
+                $("#major").html(str);
+                //填充分页数据
+            }
+        });
+    }
+    function loadCollege(){
+        $.ajax({
+            type: "GET",
+            url: "/college/all",
+            data: null,
+            dataType:"json",
+            success: function(vo){
+                let list=vo.list;
+                let str="";
+                str+='<option value="0" selected>请选择学院</option>';
+                for(let i=0;i<list.length;i++){
+                    str+='<option value="'+list[i].id+'">'+list[i].college+'</option>';
+                }
+                $("#college").html(str);
+                //填充分页数据
+            }
+        });
+    }
+</script>
+</html>

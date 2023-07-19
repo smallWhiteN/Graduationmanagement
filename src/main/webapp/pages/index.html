@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>首页</title>
+    <link rel="stylesheet" href="/css/pie.css" >
+    <link rel="stylesheet" href="/css/total.css" >
+    <link rel="stylesheet" href="/layui/css/layui.css"    media="all">
+<!--    <link  rel="stylesheet" type="text/css" href="/css/bootstrap.css"></link>-->
+    <link  rel="stylesheet" type="text/css" href="/css/style.css"></link>
+    <script type="text/javascript" src="/js/jquery-1.12.4.js"></script>
+<!--    <script type="text/javascript" src="/js/bootstrap.js" ></script>-->
+    <script type="text/javascript" src="/layui/layui.js" ></script>
+    <style>
+        .btn-danger {
+            color: #fff;
+            background-color: #d9534f;
+            border-color: #d43f3a;
+        }
+        .btn-danger:focus,
+        .btn-danger.focus {
+            color: #fff;
+            background-color: #c9302c;
+            border-color: #761c19;
+        }
+        .btn-danger:hover {
+            color: #fff;
+            background-color: #c9302c;
+            border-color: #ac2925;
+        }
+        .btn-danger:active,
+        .btn-danger.active,
+        .open > .dropdown-toggle.btn-danger {
+            color: #fff;
+            background-color: #c9302c;
+            border-color: #ac2925;
+        }
+        .btn-danger:active:hover,
+        .btn-danger.active:hover,
+        .open > .dropdown-toggle.btn-danger:hover,
+        .btn-danger:active:focus,
+        .btn-danger.active:focus,
+        .open > .dropdown-toggle.btn-danger:focus,
+        .btn-danger:active.focus,
+        .btn-danger.active.focus,
+        .open > .dropdown-toggle.btn-danger.focus {
+            color: #fff;
+            background-color: #ac2925;
+            border-color: #761c19;
+        }
+        .btn-danger:active,
+        .btn-danger.active,
+        .open > .dropdown-toggle.btn-danger {
+            background-image: none;
+        }
+        .btn-danger.disabled:hover,
+        .btn-danger[disabled]:hover,
+        fieldset[disabled] .btn-danger:hover,
+        .btn-danger.disabled:focus,
+        .btn-danger[disabled]:focus,
+        fieldset[disabled] .btn-danger:focus,
+        .btn-danger.disabled.focus,
+        .btn-danger[disabled].focus,
+        fieldset[disabled] .btn-danger.focus {
+            background-color: #d9534f;
+            border-color: #d43f3a;
+        }
+        .btn-danger .badge {
+            color: #d9534f;
+            background-color: #fff;
+        }.btn {
+             display: inline-block;
+             padding: 6px 12px;
+             margin-bottom: 0;
+             font-size: 14px;
+             font-weight: normal;
+             line-height: 1.42857143;
+             text-align: center;
+             white-space: nowrap;
+             vertical-align: middle;
+             -ms-touch-action: manipulation;
+             touch-action: manipulation;
+             cursor: pointer;
+             -webkit-user-select: none;
+             -moz-user-select: none;
+             -ms-user-select: none;
+             user-select: none;
+             background-image: none;
+             border: 1px solid transparent;
+             border-radius: 4px;
+         }
+        .btn:focus,
+        .btn:active:focus,
+        .btn.active:focus,
+        .btn.focus,
+        .btn:active.focus,
+        .btn.active.focus {
+            outline: 5px auto -webkit-focus-ring-color;
+            outline-offset: -2px;
+        }
+        .btn:hover,
+        .btn:focus,
+        .btn.focus {
+            color: #333;
+            text-decoration: none;
+        }
+        .btn:active,
+        .btn.active {
+            background-image: none;
+            outline: 0;
+            -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+            box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+        }
+        .btn.disabled,
+        .btn[disabled],
+        fieldset[disabled] .btn {
+            cursor: not-allowed;
+            filter: alpha(opacity=65);
+            -webkit-box-shadow: none;
+            box-shadow: none;
+            opacity: .65;
+        }
+    </style>
+</head>
+<body>
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+        <div class="layui-logo layui-hide-xs layui-bg-black">毕业生去向管理系统</div>
+            <ul class="layui-nav layui-layout-right">
+                <li class="layui-nav-item layui-hide layui-show-md-inline-block">
+                    <span id="username"></span>
+                </li>
+                <li class="layui-nav-item">
+                    <input type="button" class="btn btn-danger" value="退出" name="exit" onclick="exit()">
+                </li>
+            </ul>
+    </div>
+    <div class="layui-side layui-bg-black" id="">
+        <div class="layui-side-scroll">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-nav layui-nav-tree" lay-filter="test" id="ul">
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;" >学生信息</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="/pages/manager/stuList.html" target="right">去向信息列表</a></dd>
+                        <dd><a href="/pages/manager/audit.html" target="right">审核</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;" >统计</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="/pages/manager/rate.html" target="right">就业数据</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="layui-body">
+        <iframe  width="100%" height="100%" class="" name="right"></iframe>
+    </div>
+
+
+</div>
+
+<script>
+    $(function () {
+        isValid();
+        if(sessionStorage["role"]=="manager"){
+            loadManager();
+        }else{
+            loadGraduate();
+        }
+    })
+    function isValid() {
+        if(sessionStorage["role"]!="manager"){
+            location.href=('/pages/manager/illegal.html');
+        }
+    }
+    function exit(){
+        sessionStorage.clear();
+        location.href=('/pages/login.html');
+    }
+    function loadManager() {
+        $("#username").html("管理员，您好！");
+    }
+    //JS
+    layui.use(['element', 'layer', 'util'], function(){
+        var element = layui.element
+            ,layer = layui.layer
+            ,util = layui.util
+            ,$ = layui.$;
+
+        //头部事件
+        util.event('lay-header-event', {
+            //左侧菜单事件
+            menuLeft: function(othis){
+                layer.msg('展开左侧菜单的操作', {icon: 0});
+            }
+            ,menuRight: function(){
+                layer.open({
+                    type: 1
+                    ,content: '<div style="padding: 15px;">处理右侧面板的操作</div>'
+                    ,area: ['260px', '100%']
+                    ,offset: 'rt' //右上角
+                    ,anim: 5
+                    ,shadeClose: true
+                });
+            }
+        });
+    });
+
+</script>
+</body>
+</html>

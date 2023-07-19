@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <script type="text/javascript" src="/js/jquery-1.12.4.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.js" ></script>
+    <script type="text/javascript" src="/layui/layui.js"></script>
+    <link href="/js/fileinput/css/fileinput.css" type="text/css" rel="stylesheet" />
+    <script src="/js/fileinput/js/fileinput.min.js"></script>
+    <script src="/js/fileinput/js/fileinput_locale_zh.js"></script>
+    <link rel="stylesheet" href="/layui/css/layui.css"    media="all">
+    <link rel="stylesheet" href="/css/total.css"    media="all">
+    <link  rel="stylesheet" type="text/css" href="/css/bootstrap.css"></link>
+    <link  rel="stylesheet" type="text/css" href="/css/style.css"></link>
+    <title>学生信息</title>
+</head>
+<body>
+<div class="container">
+    <h1 class="text-center" style="padding: 20px">学生信息</h1>
+
+    <form class="form-horizontal" id="formData">
+        <div class="form-group">
+            <label for="stuno" class="col-sm-2 control-label"><span style="color: red">*</span>学号</label>
+            <div class="col-sm-8">
+                <input name="stuno" type="text" class="form-control" id="stuno" readonly >
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="stuname" class="col-sm-2 control-label"><span style="color: red">*</span>姓名</label>
+            <div class="col-sm-8">
+                <input name="stuname" type="text" class="form-control" id="stuname" placeholder="姓名" readonly>
+            </div>
+        </div>
+<!--        <div class="form-group" >-->
+<!--            <label for="password" class="col-sm-2 control-label"><span style="color: red">*</span>确认密码</label>-->
+<!--            <div class="col-sm-8">-->
+<!--                <input name="password2" type="password" class="form-control" id="password2" placeholder="Password" onblur="pwdIsEqual()">-->
+<!--            </div>-->
+<!--        </div>-->
+        <div class="form-group">
+            <label for="grade" class="col-sm-2 control-label"><span style="color: red">*</span>届数</label>
+            <div class="col-sm-8">
+                <input name="grade" type="text" class="form-control" id="grade" placeholder="2023" readonly>
+            </div>
+        </div>
+        <div class="form-group">
+            <label  class="col-sm-2 control-label"><span style="color: red">*</span>性别</label>
+            <div class="col-sm-8 radio">
+                <label>
+                    <input type="radio" name="sex" id="sex-female" value="1" checked>男
+                </label>
+                <label>
+                    <input type="radio" name="sex" id="sex-male" value="0" >女
+                </label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="idNumber" class="col-sm-2 control-label"><span style="color: red">*</span>身份证号</label>
+            <div class="col-sm-8">
+                <input name="idNumber" type="text" class="form-control" id="idNumber" placeholder="Password" readonly>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="college" class="col-sm-2 control-label"><span style="color: red">*</span>学院</label>
+            <div class="col-sm-8">
+                <input name="college" type="text" class="form-control" id="college" placeholder="Password" readonly>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="major" class="col-sm-2 control-label"><span style="color: red">*</span>专业</label>
+            <div class="col-sm-8">
+                <input name="major" type="text" class="form-control" id="major" readonly>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="direction" class="col-sm-2 control-label">去向</label>
+            <div class="col-sm-8">
+                <input name="direction" type="text" class="form-control" id="direction" readonly>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="place" class="col-sm-2 control-label">地址</label>
+            <div class="col-sm-8">
+                <input name="place" type="text" class="form-control" id="place" readonly>
+            </div>
+        </div>
+        <div class="form-group">
+            <label  class="col-sm-2 control-label">是否省内</label>
+            <div class="col-sm-8 radio">
+                <input name="isInProvince" type="text" class="form-control" id="isInProvince" readonly>
+            </div>
+        </div>
+        <div id="enrollment">
+            <div class="form-group">
+                <label  class="col-sm-2 control-label">是否是双一流</label>
+                <div class="col-sm-8 radio">
+                    <input name="isDFC" type="text" class="form-control" id="isDFC" readonly>
+                </div>
+            </div>
+            <div class="form-group">
+                <label  class="col-sm-2 control-label">是否跨考</label>
+                <div class="col-sm-8 radio">
+                    <input name="isCrossExam" type="text" class="form-control" id="isCrossExam" readonly>
+                </div>
+            </div>
+        </div>
+        <div id="work">
+            <div class="form-group">
+                <label for="college" class="col-sm-2 control-label">企业性质</label>
+                <div class="col-sm-8">
+                    <input name="companyId" type="text" class="form-control" id="companyId" readonly>
+
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="url" class="col-sm-2 control-label">证明材料</label>
+            <div class="col-sm-8">
+                <img id="url" name="url">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="url" class="col-sm-2 control-label">最近修改时间</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" id="lastSaveTime" readonly>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="note" class="col-sm-2 control-label">备注</label>
+            <div class="col-sm-8">
+                <input name="note" type="text" class="form-control" id="note"/>
+            </div>
+        </div>
+        <div class="form-group">
+                <button id="acceptReq" type="button" class="col-sm-offset-4 col-sm-1 btn btn-success" >同意</button>
+                <button id="rejectReq" type="button" class="col-sm-offset-1 col-sm-1 btn btn-danger" >驳回</button>
+                <button id="back" type="button" class="col-sm-offset-1 col-sm-1 btn btn-info">返回</button>
+        </div>
+    </form>
+</div>
+</body>
+<script>
+    var stuno, college, major, direction,url, companyId;
+    function TimestampToDate(Timestamp) {
+        let date1 = new Date(Timestamp);
+        return date1.toLocaleDateString().replace(/\//g, "-") + " " + date1.toTimeString().substr(0, 8);
+    }
+    $(function (){
+        stuno=sessionStorage["stuno"];
+        $("#stuno").val(stuno);
+        loadAudit();
+
+        $("#rejectReq").click(function (){
+            layer.prompt({title: '请填写驳回理由', formType: 2}, function(text, index){
+                layer.close(index);
+                layer.msg('驳回成功<br>您的驳回理由是：'+text);
+                $.ajax({
+                    type:"POST",
+                    url:"/audit/"+stuno,
+                    data:{"_method":"delete","msg":text},
+                    dataType: "json",
+                    success:function (vo) {
+                        location.href=("/pages/manager/audit.html");
+                    }
+                });
+            });
+
+        });
+        $("#acceptReq").click(function () {
+            $.ajax({
+                type:"POST",
+                url:"/audit/"+stuno,
+                data:{"_method":"put"},
+                dataType: "json",
+                success:function (vo) {
+                    location.href=("/pages/manager/audit.html");
+                }
+            });
+        })
+        $("#back").click(function (){
+
+            location.href=("/pages/manager/audit.html");
+        })
+
+    })
+
+    function loadAudit() {
+        $.ajax({
+            type:"GET",
+            url:"/audit/"+stuno,
+            data:null,
+            dataType:"json",
+            async:false,
+            success:function (vo){
+                let obj= vo.obj;
+                college=obj.college;
+                major=obj.major;
+                direction=obj.direction;
+                url=obj.url;
+                companyId=obj.companyId;
+                if(companyId!=null && companyId!=0){
+                    loadCompanyType(companyId);
+                }
+                $("input[name=stuno]").val(obj.stuno);
+                $("input[name=grade]").val(obj.grade);
+                $("input[name=stuname]").val(obj.stuname);
+                $("input:radio[value='"+obj.sex+"']").attr('checked','true');
+                $("input[name=idNumber]").val(obj.idNumber);
+                $("input[name=place]").val(obj.place);
+                $("input[name=isInProvince]").val(obj.isInProvince==0?'否':(obj.isInProvince==1?'是':''));
+                $("input[name=isCrossExam]").val(obj.isCrossExam==0?'否':'是');
+                $("input[name=isDFC]").val(obj.isDFC==0?'否':'是');
+                $("input[name=college]").val(obj.c.college);
+                $("input[name=major]").val(obj.m.major);
+                $("input[name=direction]").val(obj.d.direction);
+                $("#lastSaveTime").val(TimestampToDate(obj.lastSaveTime));
+                if(direction==3){
+                    $("#enrollment").css("display", "inline");
+                    $("#work").css("display", "none");
+                }else if(direction==1 || direction==2){
+                    $("#enrollment").css("display", "none");
+                    $("#work").css("display", "inline");
+                }else{
+                    $("#enrollment").css("display", "none");
+                    $("#work").css("display", "none");
+                }
+                if(url!=null && url!=""){
+                    $("#url").attr("src","/img/certificates/"+url);
+                }else{
+                    $("#url").addClass("hidden");
+                    $("#url").parent().html("未上传材料");
+                }
+            }
+        });
+    }
+    function loadCompanyType(companyId){
+        $.ajax({
+            type:"GET",
+            url:"/companytype/"+companyId,
+            data:null,
+            dataType:"json",
+            success:function (vo){
+                $("#companyId").val(vo.obj.companyType);
+            }
+        })
+    }
+
+</script>
+</html>

@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <script type="text/javascript" src="/js/jquery-1.12.4.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.js" ></script>
+    <script type="text/javascript" src="/layui/layui.js"></script>
+    <link href="/js/fileinput/css/fileinput.css" type="text/css" rel="stylesheet" />
+    <script src="/js/fileinput/js/fileinput.min.js"></script>
+    <script src="/js/fileinput/js/fileinput_locale_zh.js"></script>
+    <link rel="stylesheet" href="/layui/css/layui.css"    media="all">
+    <link rel="stylesheet" href="/css/total.css"    media="all">
+    <link  rel="stylesheet" type="text/css" href="/css/bootstrap.css"></link>
+    <link  rel="stylesheet" type="text/css" href="/css/style.css"></link>
+    <title>学生信息</title>
+</head>
+<body>
+<div class="container">
+        <h1 class="text-center" style="padding: 20px">毕业生信息
+            <img src="/img/info.png" style="margin-left: 50px;width: 32px;" onclick="loadAuditInfo()"></h1>
+    <form class="form-horizontal" id="formData">
+        <div class="form-group">
+            <label for="stuno" class="col-sm-2 control-label"><span style="color: red">*</span>学号</label>
+            <div class="col-sm-8">
+                <input name="stuno" type="text" class="form-control" id="stuno" readonly>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="stuname" class="col-sm-2 control-label"><span style="color: red">*</span>姓名</label>
+            <div class="col-sm-8">
+                <input name="stuname" type="text" class="form-control" id="stuname" placeholder="姓名" >
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password" class="col-sm-2 control-label"><span style="color: red">*</span>密码</label>
+            <div class="col-sm-8">
+                <input name="password" type="password" class="form-control" id="password" placeholder="Password">
+            </div>
+        </div>
+<!--        <div class="form-group" >-->
+<!--            <label for="password" class="col-sm-2 control-label"><span style="color: red">*</span>确认密码</label>-->
+<!--            <div class="col-sm-8">-->
+<!--                <input name="password2" type="password" class="form-control" id="password2" placeholder="Password" onblur="pwdIsEqual()">-->
+<!--            </div>-->
+<!--        </div>-->
+        <div class="form-group">
+            <label for="grade" class="col-sm-2 control-label"><span style="color: red">*</span>届数</label>
+            <div class="col-sm-8">
+                <input name="grade" type="text" class="form-control" id="grade" placeholder="2023">
+            </div>
+        </div>
+        <div class="form-group">
+            <label  class="col-sm-2 control-label"><span style="color: red">*</span>性别</label>
+            <div class="col-sm-8 radio">
+                <label>
+                    <input type="radio" name="sex" id="sex-female" value="1" checked>男
+                </label>
+                <label>
+                    <input type="radio" name="sex" id="sex-male" value="0" >女
+                </label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="idNumber" class="col-sm-2 control-label"><span style="color: red">*</span>身份证号</label>
+            <div class="col-sm-8">
+                <input name="idNumber" type="text" class="form-control" id="idNumber">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="college" class="col-sm-2 control-label"><span style="color: red">*</span>学院</label>
+            <div class="col-sm-8">
+                <select class="form-control" name="college" id="college" onchange="loadMajor()">
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="major" class="col-sm-2 control-label"><span style="color: red">*</span>专业</label>
+            <div class="col-sm-8">
+                <select class="form-control" name="major" id="major">
+
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="direction" class="col-sm-2 control-label">去向</label>
+            <div class="col-sm-8">
+                <select class="form-control" name="direction" id="direction" onchange="direction_change()">
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label  class="col-sm-2 control-label">是否省内</label>
+            <div class="col-sm-8 radio">
+                <input type="radio" name="isInProvince" class="hidden" value="-1" checked>
+                <label>
+                    <input type="radio" name="isInProvince" id="inProvince" value="1" >是
+                </label>
+                <label>
+                    <input type="radio" name="isInProvince" id="notInProvince" value="0">否
+                </label>
+            </div>
+        </div>
+        <div id="enrollment">
+            <div class="form-group">
+                <label  class="col-sm-2 control-label">是否是双一流</label>
+                <div class="col-sm-8 radio">
+                    <input type="radio" name="isDFC" class="hidden" value="-1" >
+                    <label>
+                        <input type="radio" name="isDFC" id="isDFC" value="1" >是
+                    </label>
+                    <label>
+                        <input type="radio" name="isDFC" id="isNotDFC" value="0">否
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label  class="col-sm-2 control-label">是否跨考</label>
+                <div class="col-sm-8 radio">
+                    <input type="radio" name="isCrossExam" class="hidden" value="-1" >
+                    <label>
+                        <input type="radio" name="isCrossExam" id="isCrossExam" value="1" >是
+                    </label>
+                    <label>
+                        <input type="radio" name="isCrossExam" id="isNotCrossExam" value="0">否
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div id="work">
+            <div class="form-group">
+                <label for="college" class="col-sm-2 control-label">企业性质</label>
+                <div class="col-sm-8">
+                    <select class="form-control" name="companyId" id="companyType" >
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="place" class="col-sm-2 control-label">拟接收地址</label>
+            <div class="col-sm-8">
+                <input name="place" type="text" class="form-control" id="place" placeholder="xx单位">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="certificate" class="col-sm-2 control-label">已上传的证明材料</label>
+            <div class="col-sm-8">
+                <img id="img" name="img" style="max-width: 800px">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="certificate" class="col-sm-2 control-label">证明材料</label>
+            <div class="col-sm-8">
+                <input  name="certificate" type="file"  id="certificate" placeholder=""/>
+                <span>请上传图片。格式为(.jpg\.jpeg\.png)等</span>
+            </div>
+        </div>
+        <div class="form-group hidden">
+            <label for="url" class="col-sm-2 control-label">证明材料文件名</label>
+            <div class="col-sm-8">
+                <input  name="url" type="text"  id="url"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="note" class="col-sm-2 control-label">备注</label>
+            <div class="col-sm-8">
+                <input name="note" type="text" class="form-control" id="note"/>
+            </div>
+        </div>
+        <div class="form-group">
+                <button id="submit" type="button" class="col-sm-offset-4 col-sm-1 btn btn-info">提交</button>
+                <button id="exit" type="button" class="col-sm-offset-1 col-sm-1 btn btn-danger">退出</button>
+        </div>
+    </form>
+</div>
+</body>
+<script>
+    var stuno, college, major, direction,url, companyId;
+    function TimestampToDate(Timestamp) {
+        let date1 = new Date(Timestamp);
+        return date1.toLocaleDateString().replace(/\//g, "-") + " " + date1.toTimeString().substr(0, 8);
+    }
+    $(document).keydown(function(event){
+        if(event.keyCode==13){
+            document.getElementById("submit").click();
+        }
+    });
+    function fileUpLoad() {
+        $("#certificate").fileinput({
+            uploadUrl:"/audit/"+stuno, //接受请求地址
+            uploadAsync : true, //默认异步上传
+            showUpload : true, //是否显示上传按钮,跟随文本框的那个
+            showRemove : true, //显示移除按钮,跟随文本框的那个
+            showCaption : true,//是否显示标题,就是那个文本框
+            showPreview : true, //是否显示预览,不写默认为true
+            dropZoneEnabled : false,//是否显示拖拽区域，默认不写为true，但是会占用很大区域
+            //minImageWidth: 50, //图片的最小宽度
+            //minImageHeight: 50,//图片的最小高度
+            //maxImageWidth: 1000,//图片的最大宽度
+            //maxImageHeight: 1000,//图片的最大高度
+            //maxFileSize: 0,//单位为kb，如果为0表示不限制文件大小
+            //minFileCount: 0,
+            maxFileCount : 1, //表示允许同时上传的最大文件个数
+            enctype : 'multipart/form-data',
+            validateInitialCount : true,
+            /* previewFileIcon : "<i class='glyphicon glyphicon-king'></i>",*/
+            msgFilesTooMany : "选择上传的文件数量({n}) 超过允许的最大数值{m}！",
+            allowedFileTypes : [ 'image' ],//配置允许文件上传的类型
+            allowedPreviewTypes : [ 'image' ],//配置所有的被预览文件类型
+            // allowedPreviewMimeTypes : ['image/jpeg','image/jpg'],//控制被预览的所有mime类型
+            language : 'zh'
+        });
+        $("#certificate").on("fileuploaded", function(event,data,msg) { //异步上传成功后回调
+            $("#url").val(data.response.obj);
+            url=data.response.obj;
+            console.log("data.response: "+data.response.obj);		//data为返回的数据
+        });
+        $('#certificate').on('fileerror', function(event, data, msg) {
+            alert("上传失败！"+msg);
+        });
+    }
+    function direction_change(){
+        let d=$("#direction").val();
+        if(d==3){
+            $("#enrollment").css("display", "inline");
+            $("#work").css("display", "none");
+        }else if(d==1 || d==2){
+            $("#enrollment").css("display", "none");
+            $("#work").css("display", "inline");
+        }else{
+            $("#enrollment").css("display", "none");
+            $("#work").css("display", "none");
+        }
+    }
+
+    $(function (){
+        $("#stuno").val(sessionStorage["stuno"]);
+        loadGraduate();
+        loadCollege();
+        loadDirection();
+        loadCompanyType();
+        fileUpLoad();
+
+        $("#submit").click(function (){
+            if(!isValid())return;
+            $.ajax({
+                type:"POST",
+                url:"/audit/",
+                data:$("#formData").serialize(),
+                dataType:"json",
+                success:function (vo){
+                    if(vo.code==200){
+                        layer.alert('提交成功，待审核',{icon:1});
+                        // setTimeout(function () {
+                        //     location.href=('/pages/graduate/information.html');
+                        // }, 3000);
+                    }else{
+                        layer.alert('提交失败，请重试',{icon:2});
+                        return ;
+                    }
+                },error:function (vo){
+                        layer.alert('提交成功，待审核',{icon:1});
+                        // setTimeout(function () {
+                        //     location.href=('/pages/graduate/information.html');
+                        // }, 3000);
+                }
+            })
+        });
+        $("#exit").click(function (){
+            sessionStorage.clear();
+            location.href=("/pages/login.html");
+        })
+
+    })
+    function loadAuditInfo() {
+        $.ajax({
+           type:"GET",
+           url:"/audit/" +stuno,
+            data:null,
+            dataType:"json",
+            success:function (vo) {
+               if(vo.obj==null){
+                   layer.alert('暂无审核记录', {
+                       icon: 0,
+                       skin: 'layer-ext-demo' //见：扩展说明
+                   })
+                   return ;
+               }
+               if(vo.obj.state==1){
+                   layer.alert('您于'+TimestampToDate(vo.obj.lastSaveTime)+'提交的申请&nbsp;审核通过', {
+                       icon: 1
+                   })
+               }else if(vo.obj.state==-1){
+                   layer.alert('您于'+TimestampToDate(vo.obj.lastSaveTime)+'提交的申请&nbsp;审核失败<p>原因：'+vo.obj.msg+'</p>', {
+                       icon: 2
+                   })
+               }else{
+                   layer.alert('您于'+TimestampToDate(vo.obj.lastSaveTime)+'提交的申请&nbsp;待审核',{icon:0});
+               }
+
+            },
+            error:function (vo) {
+                layer.alert('没有您的审核记录哦~', {
+                    icon: 1
+                })
+            }
+        });
+    }
+    function loadGraduate() {
+        stuno = sessionStorage["stuno"];
+        $.ajax({
+            type:"GET",
+            url:"/graduate/"+stuno,
+            data:null,
+            dataType:"json",
+            async:false,
+            success:function (vo){
+                let obj= vo.obj;
+                college=obj.college;
+                major=obj.major;
+                direction=obj.direction;
+                let url=obj.url;
+                let isInProvince=obj.isInProvince==null?-1:obj.isInProvince;
+                let isCrossExam =obj.isCrossExam==null?-1:obj.isCrossExam;
+                let isDFC = obj.isDFC==null?-1:obj.isDFC;
+                companyId = obj.companyId==null?0:obj.companyId;
+                // console.log(companyId);
+                $("input[name=stuno]").val(obj.stuno);
+                $("input[name=grade]").val(obj.grade);
+                $("input[name=password]").val(obj.password);
+                $("input[name=stuname]").val(obj.stuname);
+                $("input[name=sex][value='"+obj.sex+"']").attr('checked','true');
+                $("input[name=idNumber]").val(obj.idNumber);
+                $("input[name=place]").val(obj.place);
+                $("input[name=url]").val(obj.url);
+                $("input[name=note]").val(obj.note);
+                console.log(isInProvince+" "+ isCrossExam);
+                $('input[type=radio][name=isInProvince][value='+isInProvince+']').prop('checked', true);
+                $('input[type=radio][name=isCrossExam][value='+isCrossExam+']').prop('checked', true);
+                $('input[type=radio][name=isDFC][value='+isDFC+']').prop('checked', true);
+                $("input[name=companyId]").val(companyId);
+                if(url!=null){
+                    $("img[name='img']").attr("src","/img/certificates/"+url);
+                }else{
+                    $("img[name='img']").addClass("hidden");
+                    $("img[name='img']").parent().html("还没有上传材料");
+                }
+            }
+        });
+    }
+    function isValid(){
+        let stuno=$("#stuno").val();
+        let stuname=$("#stuname").val();
+        let password=$("#password").val();
+        let grade=$("#grade").val();
+        let sex=$("input:radio[name='sex']:checked").val();
+        let idNumber=$("#idNumber").val();
+        let college=$("#college").val();
+        let major=$("#major").val();
+        let direction = $("#direction").val();
+        let isInProvince = $("input:radio[name='isInProvince']:checked").val();
+        let isDFC = $("input:radio[name='isDFC']:checked").val();
+        let isCrossExam = $("input:radio[name='isCrossExam']:checked").val();
+        let companyId = $("#companyType").val();
+        let url = $("#url").val();
+        let note =$("#note").val();
+
+        let stunoReg= /^20\d{10}$/;
+        let idNumberReg=/^[0-9]{17}[0-9X]$/;
+        let gradeReg=/^\d{4}$/;
+        if(stuno=="" || stuno==null){
+            layer.alert('请输入学号', {
+                icon: 0,
+                skin: 'layer-ext-demo',
+            });
+            return false;
+        }
+        if(!stunoReg.test(stuno)){
+            layer.alert('学号格式错误', {
+                icon: 2,
+                skin: 'layer-ext-demo',
+            });
+            return false;
+        }
+        if(stuname=="" || stuname==null){
+            layer.alert('请输入姓名', {
+                icon: 0,
+                skin: 'layer-ext-demo',
+            });
+            return false;
+        }
+        if(password=="" || password==null){
+            layer.alert('请输入密码', {
+                icon: 0,
+                skin: 'layer-ext-demo',
+            });
+            return false;
+        }
+        // if(!pwdIsEqual())return ;
+        if(grade=="" || grade==null || !gradeReg.test(grade)){
+            layer.alert('届数格式不对', {
+                icon: 0,
+                skin: 'layer-ext-demo',
+            });
+            return false;
+        }
+        console.log(sex);
+        if(sex=="" || sex==null){
+            layer.alert('请选择性别', {
+                icon: 0,
+                skin: 'layer-ext-demo',
+            });
+            return false;
+        }
+        if(idNumber=="" || idNumber==null){
+            layer.alert('请输入身份证号', {
+                icon: 0,
+                skin: 'layer-ext-demo',
+            });
+            return false;
+        }
+        if(!idNumberReg.test(idNumber)){
+            layer.alert('身份证号有误，请检查', {
+                icon: 2,
+                skin: 'layer-ext-demo',
+            });
+            return false;
+        }
+        if(college==null || college=="0"){
+            layer.alert('请选择学院', {
+                icon: 0,
+                skin: 'layer-ext-demo',
+            });
+            return false;
+        }
+        if(isInProvince==-1 &&(direction!=0 & direction!=8)){
+            layer.alert('请选择是否省内', {
+                icon: 0,
+                skin: 'layer-ext-demo',
+            });
+            return false;
+        }
+        if((direction==1 || direction==2)&& companyId==0){
+            layer.alert('请选择企业性质', {
+                icon: 0,
+                skin: 'layer-ext-demo',
+            });
+            return false;
+        }
+        if(direction==3 && isDFC==-1 ){
+            layer.alert('请选择是否是双一流', {
+                icon: 0,
+                skin: 'layer-ext-demo',
+            });
+            return false;
+        }
+        if(direction==3 && isCrossExam==-1){
+            layer.alert('请选择是否是跨考', {
+                icon: 0,
+                skin: 'layer-ext-demo',
+            });
+            return false;
+        }
+        if((direction!=0) && (url==null || url=="")){
+            layer.alert('请上传去向凭证', {
+                icon: 0,
+                skin: 'layer-ext-demo',
+            });
+            return false;
+        }
+        if((direction==0) && (url!=null && url!="")){
+            layer.alert('请选择去向', {
+                icon: 0,
+                skin: 'layer-ext-demo',
+            });
+            return false;
+        }
+        return true;
+    }
+    function loadMajor(){
+        $.ajax({
+            type: "GET",
+            url: "/major/all",
+            data: null,
+            dataType:"json",
+            success: function(vo){
+                let list=vo.list;
+                let str="";
+                for(let i=0;i<list.length;i++){
+                    if($("#college").val()!=list[i].collegeid)continue;
+                    str+='<option value="'+list[i].id+'">'+list[i].major+'</option>';
+                }
+                $("#major").html(str);
+                $("#major").val(major);
+            }
+        });
+    }
+    function loadCompanyType(){
+        $.ajax({
+            type: "GET",
+            url: "/companytype/all",
+            data: null,
+            dataType:"json",
+            async:false,
+            success: function(vo){
+                let list=vo.list;
+                let str="";
+                str+='<option value="0" selected>请选择企业性质</option>';
+                for(let i=0;i<list.length;i++){
+                    str+='<option value="'+list[i].id+'">'+list[i].companyType+'</option>';
+                }
+                $("#companyType").html(str);
+                $("#companyType").val(companyId);
+            }
+        });
+    }
+    function loadCollege(){
+        console.log("college"+college);
+        $.ajax({
+            type: "GET",
+            url: "/college/all",
+            data: null,
+            dataType:"json",
+            success: function(vo){
+                let list=vo.list;
+                let str="";
+                for(let i=0;i<list.length;i++){
+                    str+='<option value="'+list[i].id+'">'+list[i].college+'</option>';
+                }
+                $("#college").html(str);
+                $("#college").val(college);
+                loadMajor();
+            }
+        });
+    }
+    function loadDirection(){
+        $.ajax({
+            type: "GET",
+            url: "/direction/all",
+            data: null,
+            dataType:"json",
+            success: function(vo){
+                let list=vo.list;
+                let str="";
+                for(let i=0;i<list.length;i++){
+                    str+='<option value="'+list[i].id+'">'+list[i].direction+'</option>';
+                }
+                $("#direction").html(str);
+                if(direction==null)direction=0;
+                $("#direction").val(direction);
+                //填充分页数据
+                direction_change();
+
+            }
+        });
+    }
+</script>
+</html>

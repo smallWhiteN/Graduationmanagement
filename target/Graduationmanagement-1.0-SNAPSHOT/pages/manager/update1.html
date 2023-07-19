@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>修改学生信息</title>
+		<script type="text/javascript" src="/js/jquery-1.12.4.js"></script>
+		<script type="text/javascript" src="/js/bootstrap.js"></script>
+		<link rel="stylesheet" type="text/css" href="/css/bootstrap.css"></link>
+		<link rel="stylesheet" type="text/css" href="/css/style.css"></link>
+		<style>
+			label span{color: #ff0000; padding-right: 5px;}
+		</style>
+	</head>
+
+	<body>
+		<h2>修改学生信息</h2>
+		<form id="myForm" class="form-horizontal">
+			<!--springmvc的restful风格处理非get post方式请求必备参数-->
+			<!--<input name="_method"  type="hidden" value="PUT"/>-->
+			<div class="form-group">
+				<label class="col-sm-1 control-label"><span>*</span>学生学号</label>
+				<div class="col-sm-9">
+					<input name="stuno" class="form-control" type="text" disabled/>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-1 control-label"><span>*</span>password</label>
+				<div class="col-sm-9">
+					<input required="" name="password" type="password" class="form-control" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-1 control-label"><span>*</span>学生姓名</label>
+				<div class="col-sm-9">
+					<input required="required" name="stuname" class="form-control" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-1 control-label">学院</label>
+				<div class="col-sm-9">
+					<select name="college" class="form-control" ></select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-1 control-label">专业</label>
+				<div class="col-sm-9">
+					<select name="major" class="form-control" ></select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-1 control-label">去向</label>
+				<div class="col-sm-9">
+					<select name="direction" class="form-control" ></select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-1 control-label">地址</label>
+				<div class="col-sm-9">
+					<input name="place" class="form-control" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-1 control-label"></label>
+				<div class="col-sm-9">
+					<button id="btnUpdate" type="button" class="btn btn-sm btn-info">提&nbsp;交</button>
+					<button type="reset"  class="btn btn-sm btn-warning">重&nbsp;置</button>
+				</div>
+			</div>
+		</form>		
+	</body>
+</html>
+<script>
+	String.prototype.GetValue= function(para) {
+		let reg = new RegExp("(^|&)"+ para +"=([^&]*)(&|$)");
+		let r = this.substr(this.indexOf("\?")+1).match(reg);
+		if (r!=null) return unescape(r[2]); return null;
+	}
+	function isValid() {
+		if(sessionStorage["role"]!="manager"){
+			location.href=('/pages/manager/illegal.html');
+		}
+	}
+	$(function () {
+		isValid();
+		//根据地址获取teamId,如果null则执行增加，否则执行更新
+		let url = document.location.toString();//获取URL
+		let stuno=url.GetValue("stuno");
+		let pageNum=url.GetValue("pageNum");
+		let pageSize=url.GetValue("pageSize");
+
+		loadMajor();
+		loadCollege();
+		loadDirection();
+		//alert(teamId);
+		//根据id查询要更新的球队信息并回显到页面
+		queryById(stuno);
+		//提交按钮的单击事件--实现真正的更新
+		$("#btnUpdate").click(function () {
+			$.ajax({
+				type: "POST",//这里必须写POST
+				url: "/graduate/"+stuno,
+				data: $("#myForm").serialize()+"&_method=PUT",
+				dataType:"json",
+				success: function(vo){
+					if(vo.code==200) {
+
+						window.location.href = "/pages/manager/stuList.html?";
+					}else{
+						alert("更新失败！"+vo.msg);
+					}
+				}
+			});
+		});
+	});
+	function queryById(stuno) {
+		$.ajax({
+			type: "GET",
+			url: "/graduate/"+stuno, //RESTful风格的API定义
+			data: "",
+			success: function (vo) {
+				let obj=vo.obj;
+				let stuno=obj.stuno;
+				let password=obj.password;
+				let stuname=obj.stuname;
+				let college=obj.college;
+				let major=obj.major;
+				let direction=obj.direction;
+				let place = obj.place;
+				$("input[name='stuno']").val(stuno);
+				$("input[name='password']").val(password);
+				$("input[name='stuname']").val(stuname);
+
+				$("select[name='college']").find("option[value="+college+"]").attr("selected", true);
+				$("select[name='major']").find("option[value="+major+"]").attr("selected", true);
+				$("select[name='direction']").find("option[value="+direction+"]").attr("selected", true);
+				$("input[name='place']").val(place);
+			}
+		});
+	}
+	function loadMajor(){
+		$.ajax({
+			type: "GET",
+			url: "/major/all",
+			data: null,
+			dataType:"json",
+			success: function(vo){
+				let list=vo.list;
+				let str="";
+				for(let i=0;i<list.length;i++){
+					str+='<option value="'+list[i].id+'">'+list[i].major+'</option>';
+				}
+				$("select[name=major]").html(str);
+				//填充分页数据
+			}
+		});
+	}
+	function loadCollege(){
+		$.ajax({
+			type: "GET",
+			url: "/college/all",
+			data: null,
+			dataType:"json",
+			success: function(vo){
+				let list=vo.list;
+				let str="";
+				for(let i=0;i<list.length;i++){
+					str+='<option value="'+list[i].id+'">'+list[i].college+'</option>';
+				}
+				$("select[name=college]").html(str);
+				//填充分页数据
+			}
+		});
+	}
+	function loadDirection(){
+		$.ajax({
+			type: "GET",
+			url: "/direction/all",
+			data: null,
+			dataType:"json",
+			success: function(vo){
+				let list=vo.list;
+				let str="";
+				for(let i=0;i<list.length;i++){
+					str+='<option value="'+list[i].id+'">'+list[i].direction+'</option>';
+				}
+				$("select[name=direction]").html(str);
+				//填充分页数据
+			}
+		});
+	}
+
+</script>

@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.myh.mapper.AuditMapper">
+  <resultMap id="BaseResultMap" type="com.myh.pojo.Audit">
+    <id column="stuno" jdbcType="VARCHAR" property="stuno" />
+    <result column="grade" jdbcType="INTEGER" property="grade" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="stuname" jdbcType="VARCHAR" property="stuname" />
+    <result column="sex" jdbcType="INTEGER" property="sex" />
+    <result column="idNumber" jdbcType="VARCHAR" property="idNumber" />
+    <result column="college" jdbcType="INTEGER" property="college" />
+    <result column="major" jdbcType="INTEGER" property="major" />
+    <result column="direction" jdbcType="INTEGER" property="direction" />
+    <result column="place" jdbcType="VARCHAR" property="place" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="note" jdbcType="VARCHAR" property="note" />
+    <result column="lastSaveTime" jdbcType="TIMESTAMP" property="lastSaveTime" />
+    <result column="isInProvince" jdbcType="INTEGER" property="isInProvince" />
+    <result column="isCrossExam" jdbcType="INTEGER" property="isCrossExam" />
+    <result column="isDFC" jdbcType="INTEGER" property="isDFC" />
+    <result column="companyId" jdbcType="INTEGER" property="companyId" />
+    <result column="msg" jdbcType="VARCHAR" property="msg" />
+    <result column="state" jdbcType="INTEGER" property="state" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    stuno, grade, password, stuname, sex, idNumber, college, major, direction, place, 
+    url, note, lastSaveTime, isInProvince, isCrossExam, isDFC, companyId, msg, state
+  </sql>
+  <select id="selectByExample" parameterType="com.myh.pojo.AuditExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from audit
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from audit
+    where stuno = #{stuno,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from audit
+    where stuno = #{stuno,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.myh.pojo.AuditExample">
+    delete from audit
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.myh.pojo.Audit">
+    insert into audit (stuno, grade, password, 
+      stuname, sex, idNumber, 
+      college, major, direction, 
+      place, url, note, lastSaveTime, 
+      isInProvince, isCrossExam, isDFC, 
+      companyId, msg, state
+      )
+    values (#{stuno,jdbcType=VARCHAR}, #{grade,jdbcType=INTEGER}, #{password,jdbcType=VARCHAR}, 
+      #{stuname,jdbcType=VARCHAR}, #{sex,jdbcType=INTEGER}, #{idNumber,jdbcType=VARCHAR}, 
+      #{college,jdbcType=INTEGER}, #{major,jdbcType=INTEGER}, #{direction,jdbcType=INTEGER}, 
+      #{place,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, #{note,jdbcType=VARCHAR}, #{lastSaveTime,jdbcType=TIMESTAMP},
+      #{isInProvince,jdbcType=INTEGER}, #{isCrossExam,jdbcType=INTEGER}, #{isDFC,jdbcType=INTEGER}, 
+      #{companyId,jdbcType=INTEGER}, #{msg,jdbcType=VARCHAR}, #{state,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.myh.pojo.Audit">
+    insert into audit
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="stuno != null">
+        stuno,
+      </if>
+      <if test="grade != null">
+        grade,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="stuname != null">
+        stuname,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="idNumber != null">
+        idNumber,
+      </if>
+      <if test="college != null">
+        college,
+      </if>
+      <if test="major != null">
+        major,
+      </if>
+      <if test="direction != null">
+        direction,
+      </if>
+      <if test="place != null">
+        place,
+      </if>
+      <if test="url != null">
+        url,
+      </if>
+      <if test="note != null">
+        note,
+      </if>
+        lastSaveTime,
+      <if test="isInProvince != null">
+        isInProvince,
+      </if>
+      <if test="isCrossExam != null">
+        isCrossExam,
+      </if>
+      <if test="isDFC != null">
+        isDFC,
+      </if>
+      <if test="companyId != null">
+        companyId,
+      </if>
+      <if test="msg != null">
+        msg,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="stuno != null">
+        #{stuno,jdbcType=VARCHAR},
+      </if>
+      <if test="grade != null">
+        #{grade,jdbcType=INTEGER},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="stuname != null">
+        #{stuname,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="idNumber != null">
+        #{idNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="college != null">
+        #{college,jdbcType=INTEGER},
+      </if>
+      <if test="major != null">
+        #{major,jdbcType=INTEGER},
+      </if>
+      <if test="direction != null">
+        #{direction,jdbcType=INTEGER},
+      </if>
+      <if test="place != null">
+        #{place,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="note != null">
+        #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="lastSaveTime != null">
+        #{lastSaveTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isInProvince != null">
+        #{isInProvince,jdbcType=INTEGER},
+      </if>
+      <if test="isCrossExam != null">
+        #{isCrossExam,jdbcType=INTEGER},
+      </if>
+      <if test="isDFC != null">
+        #{isDFC,jdbcType=INTEGER},
+      </if>
+      <if test="companyId != null">
+        #{companyId,jdbcType=INTEGER},
+      </if>
+      <if test="msg != null">
+        #{msg,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.myh.pojo.AuditExample" resultType="java.lang.Long">
+    select count(*) from audit
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update audit
+    <set>
+      <if test="record.stuno != null">
+        stuno = #{record.stuno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.grade != null">
+        grade = #{record.grade,jdbcType=INTEGER},
+      </if>
+      <if test="record.password != null">
+        password = #{record.password,jdbcType=VARCHAR},
+      </if>
+      <if test="record.stuname != null">
+        stuname = #{record.stuname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sex != null">
+        sex = #{record.sex,jdbcType=INTEGER},
+      </if>
+      <if test="record.idNumber != null">
+        idNumber = #{record.idNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.college != null">
+        college = #{record.college,jdbcType=INTEGER},
+      </if>
+      <if test="record.major != null">
+        major = #{record.major,jdbcType=INTEGER},
+      </if>
+      <if test="record.direction != null">
+        direction = #{record.direction,jdbcType=INTEGER},
+      </if>
+      <if test="record.place != null">
+        place = #{record.place,jdbcType=VARCHAR},
+      </if>
+      <if test="record.url != null">
+        url = #{record.url,jdbcType=VARCHAR},
+      </if>
+      <if test="record.note != null">
+        note = #{record.note,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lastSaveTime != null">
+        lastSaveTime = #{record.lastSaveTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.isInProvince != null">
+        isInProvince = #{record.isInProvince,jdbcType=INTEGER},
+      </if>
+      <if test="record.isCrossExam != null">
+        isCrossExam = #{record.isCrossExam,jdbcType=INTEGER},
+      </if>
+      <if test="record.isDFC != null">
+        isDFC = #{record.isDFC,jdbcType=INTEGER},
+      </if>
+      <if test="record.companyId != null">
+        companyId = #{record.companyId,jdbcType=INTEGER},
+      </if>
+      <if test="record.msg != null">
+        msg = #{record.msg,jdbcType=VARCHAR},
+      </if>
+      <if test="record.state != null">
+        state = #{record.state,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update audit
+    set stuno = #{record.stuno,jdbcType=VARCHAR},
+      grade = #{record.grade,jdbcType=INTEGER},
+      password = #{record.password,jdbcType=VARCHAR},
+      stuname = #{record.stuname,jdbcType=VARCHAR},
+      sex = #{record.sex,jdbcType=INTEGER},
+      idNumber = #{record.idNumber,jdbcType=VARCHAR},
+      college = #{record.college,jdbcType=INTEGER},
+      major = #{record.major,jdbcType=INTEGER},
+      direction = #{record.direction,jdbcType=INTEGER},
+      place = #{record.place,jdbcType=VARCHAR},
+      url = #{record.url,jdbcType=VARCHAR},
+      note = #{record.note,jdbcType=VARCHAR},
+      lastSaveTime = #{record.lastSaveTime,jdbcType=TIMESTAMP},
+      isInProvince = #{record.isInProvince,jdbcType=INTEGER},
+      isCrossExam = #{record.isCrossExam,jdbcType=INTEGER},
+      isDFC = #{record.isDFC,jdbcType=INTEGER},
+      companyId = #{record.companyId,jdbcType=INTEGER},
+      msg = #{record.msg,jdbcType=VARCHAR},
+      state = #{record.state,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.myh.pojo.Audit">
+    update audit
+    <set>
+      <if test="grade != null">
+        grade = #{grade,jdbcType=INTEGER},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="stuname != null">
+        stuname = #{stuname,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="idNumber != null">
+        idNumber = #{idNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="college != null">
+        college = #{college,jdbcType=INTEGER},
+      </if>
+      <if test="major != null">
+        major = #{major,jdbcType=INTEGER},
+      </if>
+      <if test="direction != null">
+        direction = #{direction,jdbcType=INTEGER},
+      </if>
+      <if test="place != null">
+        place = #{place,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="note != null">
+        note = #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="lastSaveTime != null">
+        lastSaveTime = #{lastSaveTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isInProvince != null">
+        isInProvince = #{isInProvince,jdbcType=INTEGER},
+      </if>
+      <if test="isCrossExam != null">
+        isCrossExam = #{isCrossExam,jdbcType=INTEGER},
+      </if>
+      <if test="isDFC != null">
+        isDFC = #{isDFC,jdbcType=INTEGER},
+      </if>
+      <if test="companyId != null">
+        companyId = #{companyId,jdbcType=INTEGER},
+      </if>
+      <if test="msg != null">
+        msg = #{msg,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=INTEGER},
+      </if>
+    </set>
+    where stuno = #{stuno,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.myh.pojo.Audit">
+    update audit
+    set grade = #{grade,jdbcType=INTEGER},
+      password = #{password,jdbcType=VARCHAR},
+      stuname = #{stuname,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=INTEGER},
+      idNumber = #{idNumber,jdbcType=VARCHAR},
+      college = #{college,jdbcType=INTEGER},
+      major = #{major,jdbcType=INTEGER},
+      direction = #{direction,jdbcType=INTEGER},
+      place = #{place,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      note = #{note,jdbcType=VARCHAR},
+      lastSaveTime =#{record.lastSaveTime,jdbcType=TIMESTAMP},
+      isInProvince = #{isInProvince,jdbcType=INTEGER},
+      isCrossExam = #{isCrossExam,jdbcType=INTEGER},
+      isDFC = #{isDFC,jdbcType=INTEGER},
+      companyId = #{companyId,jdbcType=INTEGER},
+      msg = #{msg,jdbcType=VARCHAR},
+      state = #{state,jdbcType=INTEGER}
+    where stuno = #{stuno,jdbcType=VARCHAR}
+  </update>
+</mapper>

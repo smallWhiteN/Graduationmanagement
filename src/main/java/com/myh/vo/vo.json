@@ -1,0 +1,40 @@
+{
+  "pageInfo": null,
+  "list": null,
+  "obj": {
+    "stuno": "201830523003",
+    "grade": 2023,
+    "password": "123",
+    "stuname": "hhh",
+    "sex": 1,
+    "idNumber": "370883200101010019",
+    "college": 9,
+    "major": 26,
+    "direction": 3,
+    "place": "",
+    "url": "cc6bd3acadac43d5bb7d98adfb16ea88.jpeg",
+    "note": "",
+    "lastSaveTime": 1682333442000,
+    "isInProvince": 0,
+    "isCrossExam": 0,
+    "isDFC": 0,
+    "companyId": 0,
+    "c": {
+      "id": 9,
+      "college": "机械工程学院"
+    },
+    "m": {
+      "id": 26,
+      "collegeid": 9,
+      "major": "机械工程"
+    },
+    "d": {
+      "id": 3,
+      "direction": "升学"
+    },
+    "msg": null,
+    "state": 0
+  },
+  "code": 200,
+  "msg": "ok"
+}

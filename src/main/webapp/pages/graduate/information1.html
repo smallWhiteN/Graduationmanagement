@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/layui/css/layui.css"    media="all">
+    <link rel="stylesheet" href="/css/total.css"    media="all">
+    <script type="text/javascript" src="/js/jquery-1.12.4.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.js" ></script>
+    <script type="text/javascript" src="/layui/layui.js"></script>
+    <link  rel="stylesheet" type="text/css" href="/css/bootstrap.css"></link>
+    <link  rel="stylesheet" type="text/css" href="/css/style.css"></link>
+    <title>个人信息--毕业生</title>
+</head>
+<body>
+<div class="layui-container">
+<form id="form" class="layui-form">
+    <div class="layui-form-item">
+        <lable class="layui-form-label">学号</lable></td>
+        <div class="layui-input-inline">
+            <input type="text" name="stuno" lay-verify="required"
+                   style="background-color:lightgrey" disabled class="layui-input" style="border:0px">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <lable class="layui-form-label">姓名</lable>
+        <div class="layui-input-inline">
+            <input type="text" name="stuname" lay-verify="required"
+                   style="background-color:lightgrey" disabled  class="layui-input" style="border:0px">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <lable class="layui-form-label">密码</lable>
+        <div class="layui-input-inline">
+            <input type="text" name="password" lay-verify="required"
+                      class="layui-input" style="border:0px">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <lable class="layui-form-label">学院</lable>
+        <div class="layui-input-inline">
+            <input type="text" name="college" lay-verify="required"
+                   style="background-color:lightgrey" disabled  class="layui-input" style="border:0px">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <lable class="layui-form-label">专业</lable>
+        <div class="layui-input-inline">
+            <input type="text" name="major" lay-verify="required"
+                   style="background-color:lightgrey" disabled  class="layui-input" style="border:0px">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label" >去向</label>
+        <div class="layui-input-inline">
+            <select id="direction" name="direction" lay-filter="selectDirection" lay-verify="required" >
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <lable class="layui-form-label">地址</lable>
+        <div class="layui-input-inline">
+            <input type="text" name="place"  lay-verify="required"
+                     class="layui-input" style="border:2px;border-color: #8c8c8c">
+        </div>
+    </div>
+    <div>
+        <a type="button" class="layui-btn" href="" onclick="update()">修改个人去向</a>
+    </div>
+</form>
+</div>
+</body>
+<script>
+    layui.use('form', function(){
+        var form = layui.form;
+        loadDirection();
+    });
+    function loadDirection(){
+        $.ajax({
+            type: "GET",
+            url: "/direction/all",
+            data: null,
+            dataType:"json",
+            success: function(vo){
+                let list=vo.list;
+                let str="";
+                for(let i=0;i<list.length;i++){
+                    str+='<option value="'+list[i].id+'">'+list[i].direction+'</option>';
+                }
+                $("#direction").html(str);
+                $("input[name=stuno]").val(JSON.parse(sessionStorage["graduate"]).stuno);
+                $("input[name=stuname]").val(JSON.parse(sessionStorage["graduate"]).stuname);
+                $("input[name=password]").val(JSON.parse(sessionStorage["graduate"]).password);
+                $("input[name=college]").val(JSON.parse(sessionStorage["graduate"]).c.college);
+                $("input[name=major]").val(JSON.parse(sessionStorage["graduate"]).m.major);
+                $("#direction").val(JSON.parse(sessionStorage["graduate"]).direction);
+                $("input[name=place]").val(JSON.parse(sessionStorage["graduate"]).place);
+                layui.form.render("select");
+                //填充分页数据
+            }
+        });
+    }
+    function update(){
+        let stuno=$("input[name=stuno]").val();
+        $.ajax({
+            type: "POST",
+            url: "/graduate/"+stuno,
+            data: $("#form").serialize()+"&_method=PUT",
+            dataType:"json",
+            async: false,
+            success: function(vo){
+                if(vo.code==200) {
+                    alert("修改成功！");
+                    getNewInformation(stuno);
+                }else{
+                    alert("修改失败！"+vo.msg);
+                }
+                //填充分页数据
+            },
+            error:function(vo){
+                if(vo.code==200) {
+                    alert("error--修改成功！");
+                    getNewInformation(stuno);
+                }else{
+                    alert("修改失败！"+vo.msg);
+                }
+                //填充分页数据
+            }
+        });
+
+    }
+    function getNewInformation(stuno) {
+        $.ajax({
+            type: "GET",
+            url: "/graduate/"+stuno,
+            data: null,
+            dataType:"json",
+            async: false,
+            success: function(vo){
+                let obj=vo.obj;
+                sessionStorage["graduate"]=JSON.stringify(obj);
+            },
+            error:function(vo){
+                let obj=vo.obj;
+                sessionStorage["graduate"]=JSON.stringify(obj);
+            }
+        });
+    }
+
+
+</script>
+</html>

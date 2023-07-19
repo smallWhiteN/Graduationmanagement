@@ -1,0 +1,7 @@
+0:0:0:0:0:0:0:1 - - [03/Apr/2023:23:03:40 +0800] "GET / HTTP/1.1" 200 6592 http-bio-8080-exec-2 64
+0:0:0:0:0:0:0:1 - - [03/Apr/2023:23:03:40 +0800] "GET /favicon.ico HTTP/1.1" 404 973 http-bio-8080-exec-3 14
+0:0:0:0:0:0:0:1 - - [03/Apr/2023:23:04:03 +0800] "GET /graduate/list.jsp HTTP/1.1" 404 985 http-bio-8080-exec-5 2
+0:0:0:0:0:0:0:1 - - [03/Apr/2023:23:04:12 +0800] "GET /graduate/list HTTP/1.1" 500 4500 http-bio-8080-exec-6 82
+0:0:0:0:0:0:0:1 - - [03/Apr/2023:23:08:06 +0800] "GET /graduate/list.jsp HTTP/1.1" 404 985 http-bio-8080-exec-7 40
+0:0:0:0:0:0:0:1 - - [03/Apr/2023:23:08:12 +0800] "GET /graduate/list HTTP/1.1" 200 413 http-bio-8080-exec-9 1897
+0:0:0:0:0:0:0:1 - - [03/Apr/2023:23:25:16 +0800] "GET /graduate/list HTTP/1.1" 200 471 http-bio-8080-exec-1 2203

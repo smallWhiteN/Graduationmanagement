@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.myh.service.GraduateServiceTest" time="5.308" tests="14" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="sun.desktop" value="windows"/>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="java.specification.version" value="1.8"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+    <property name="sun.jnu.encoding" value="GBK"/>
+    <property name="java.class.path" value="C:\Users\触殇\Desktop\毕设\Graduationmanagement\target\test-classes;C:\Users\触殇\Desktop\毕设\Graduationmanagement\target\classes;D:\MavenRepository\org\springframework\spring-webmvc\5.2.13.RELEASE\spring-webmvc-5.2.13.RELEASE.jar;D:\MavenRepository\org\springframework\spring-aop\5.2.13.RELEASE\spring-aop-5.2.13.RELEASE.jar;D:\MavenRepository\org\springframework\spring-beans\5.2.13.RELEASE\spring-beans-5.2.13.RELEASE.jar;D:\MavenRepository\org\springframework\spring-context\5.2.13.RELEASE\spring-context-5.2.13.RELEASE.jar;D:\MavenRepository\org\springframework\spring-core\5.2.13.RELEASE\spring-core-5.2.13.RELEASE.jar;D:\MavenRepository\org\springframework\spring-jcl\5.2.13.RELEASE\spring-jcl-5.2.13.RELEASE.jar;D:\MavenRepository\org\springframework\spring-expression\5.2.13.RELEASE\spring-expression-5.2.13.RELEASE.jar;D:\MavenRepository\org\springframework\spring-web\5.2.13.RELEASE\spring-web-5.2.13.RELEASE.jar;D:\MavenRepository\org\springframework\spring-tx\5.2.13.RELEASE\spring-tx-5.2.13.RELEASE.jar;D:\MavenRepository\org\springframework\spring-jdbc\5.2.13.RELEASE\spring-jdbc-5.2.13.RELEASE.jar;D:\MavenRepository\org\springframework\spring-aspects\5.2.13.RELEASE\spring-aspects-5.2.13.RELEASE.jar;D:\MavenRepository\org\aspectj\aspectjweaver\1.9.6\aspectjweaver-1.9.6.jar;D:\MavenRepository\commons-fileupload\commons-fileupload\1.3.1\commons-fileupload-1.3.1.jar;D:\MavenRepository\commons-io\commons-io\2.2\commons-io-2.2.jar;D:\MavenRepository\org\mybatis\mybatis\3.5.6\mybatis-3.5.6.jar;D:\MavenRepository\org\mybatis\mybatis-spring\1.3.3\mybatis-spring-1.3.3.jar;D:\MavenRepository\com\github\pagehelper\pagehelper\5.1.10\pagehelper-5.1.10.jar;D:\MavenRepository\com\github\jsqlparser\jsqlparser\2.0\jsqlparser-2.0.jar;D:\MavenRepository\mysql\mysql-connector-java\8.0.23\mysql-connector-java-8.0.23.jar;D:\MavenRepository\com\google\protobuf\protobuf-java\3.11.4\protobuf-java-3.11.4.jar;D:\MavenRepository\com\alibaba\druid\1.2.3\druid-1.2.3.jar;D:\MavenRepository\javax\servlet\javax.servlet-api\4.0.1\javax.servlet-api-4.0.1.jar;D:\MavenRepository\com\fasterxml\jackson\core\jackson-databind\2.9.6\jackson-databind-2.9.6.jar;D:\MavenRepository\com\fasterxml\jackson\core\jackson-annotations\2.9.0\jackson-annotations-2.9.0.jar;D:\MavenRepository\com\fasterxml\jackson\core\jackson-core\2.9.6\jackson-core-2.9.6.jar;D:\MavenRepository\log4j\log4j\1.2.17\log4j-1.2.17.jar;D:\MavenRepository\junit\junit\4.12\junit-4.12.jar;D:\MavenRepository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;D:\MavenRepository\org\springframework\spring-test\5.2.13.RELEASE\spring-test-5.2.13.RELEASE.jar;D:\MavenRepository\javax\annotation\javax.annotation-api\1.3.2\javax.annotation-api-1.3.2.jar;"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="user.variant" value=""/>
+    <property name="java.vendor.url" value="http://java.oracle.com/"/>
+    <property name="user.timezone" value="GMT+08:00"/>
+    <property name="java.vm.specification.version" value="1.8"/>
+    <property name="os.name" value="Windows 10"/>
+    <property name="user.country" value="CN"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.boot.library.path" value="D:\JAVA\jre\bin"/>
+    <property name="sun.java.command" value="C:\Users\触殇\AppData\Local\Temp\surefire8740338211690150793\surefirebooter-20230506152000928_3.jar C:\Users\触殇\AppData\Local\Temp\surefire8740338211690150793 2023-05-06T15-19-59_414-jvmRun1 surefire-20230506152000928_1tmp surefire_0-20230506152000928_2tmp"/>
+    <property name="surefire.test.class.path" value="C:\Users\触殇\Desktop\毕设\Graduationmanagement\target\test-classes;C:\Users\触殇\Desktop\毕设\Graduationmanagement\target\classes;D:\MavenRepository\org\springframework\spring-webmvc\5.2.13.RELEASE\spring-webmvc-5.2.13.RELEASE.jar;D:\MavenRepository\org\springframework\spring-aop\5.2.13.RELEASE\spring-aop-5.2.13.RELEASE.jar;D:\MavenRepository\org\springframework\spring-beans\5.2.13.RELEASE\spring-beans-5.2.13.RELEASE.jar;D:\MavenRepository\org\springframework\spring-context\5.2.13.RELEASE\spring-context-5.2.13.RELEASE.jar;D:\MavenRepository\org\springframework\spring-core\5.2.13.RELEASE\spring-core-5.2.13.RELEASE.jar;D:\MavenRepository\org\springframework\spring-jcl\5.2.13.RELEASE\spring-jcl-5.2.13.RELEASE.jar;D:\MavenRepository\org\springframework\spring-expression\5.2.13.RELEASE\spring-expression-5.2.13.RELEASE.jar;D:\MavenRepository\org\springframework\spring-web\5.2.13.RELEASE\spring-web-5.2.13.RELEASE.jar;D:\MavenRepository\org\springframework\spring-tx\5.2.13.RELEASE\spring-tx-5.2.13.RELEASE.jar;D:\MavenRepository\org\springframework\spring-jdbc\5.2.13.RELEASE\spring-jdbc-5.2.13.RELEASE.jar;D:\MavenRepository\org\springframework\spring-aspects\5.2.13.RELEASE\spring-aspects-5.2.13.RELEASE.jar;D:\MavenRepository\org\aspectj\aspectjweaver\1.9.6\aspectjweaver-1.9.6.jar;D:\MavenRepository\commons-fileupload\commons-fileupload\1.3.1\commons-fileupload-1.3.1.jar;D:\MavenRepository\commons-io\commons-io\2.2\commons-io-2.2.jar;D:\MavenRepository\org\mybatis\mybatis\3.5.6\mybatis-3.5.6.jar;D:\MavenRepository\org\mybatis\mybatis-spring\1.3.3\mybatis-spring-1.3.3.jar;D:\MavenRepository\com\github\pagehelper\pagehelper\5.1.10\pagehelper-5.1.10.jar;D:\MavenRepository\com\github\jsqlparser\jsqlparser\2.0\jsqlparser-2.0.jar;D:\MavenRepository\mysql\mysql-connector-java\8.0.23\mysql-connector-java-8.0.23.jar;D:\MavenRepository\com\google\protobuf\protobuf-java\3.11.4\protobuf-java-3.11.4.jar;D:\MavenRepository\com\alibaba\druid\1.2.3\druid-1.2.3.jar;D:\MavenRepository\javax\servlet\javax.servlet-api\4.0.1\javax.servlet-api-4.0.1.jar;D:\MavenRepository\com\fasterxml\jackson\core\jackson-databind\2.9.6\jackson-databind-2.9.6.jar;D:\MavenRepository\com\fasterxml\jackson\core\jackson-annotations\2.9.0\jackson-annotations-2.9.0.jar;D:\MavenRepository\com\fasterxml\jackson\core\jackson-core\2.9.6\jackson-core-2.9.6.jar;D:\MavenRepository\log4j\log4j\1.2.17\log4j-1.2.17.jar;D:\MavenRepository\junit\junit\4.12\junit-4.12.jar;D:\MavenRepository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;D:\MavenRepository\org\springframework\spring-test\5.2.13.RELEASE\spring-test-5.2.13.RELEASE.jar;D:\MavenRepository\javax\annotation\javax.annotation-api\1.3.2\javax.annotation-api-1.3.2.jar;"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="C:\Users\触殇"/>
+    <property name="user.language" value="zh"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.home" value="D:\JAVA\jre"/>
+    <property name="basedir" value="C:\Users\触殇\Desktop\毕设\Graduationmanagement"/>
+    <property name="file.separator" value="\"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
+    <property name="surefire.real.class.path" value="C:\Users\触殇\AppData\Local\Temp\surefire8740338211690150793\surefirebooter-20230506152000928_3.jar"/>
+    <property name="sun.boot.class.path" value="D:\JAVA\jre\lib\resources.jar;D:\JAVA\jre\lib\rt.jar;D:\JAVA\jre\lib\sunrsasign.jar;D:\JAVA\jre\lib\jsse.jar;D:\JAVA\jre\lib\jce.jar;D:\JAVA\jre\lib\charsets.jar;D:\JAVA\jre\lib\jfr.jar;D:\JAVA\jre\classes"/>
+    <property name="user.script" value=""/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="1.8.0_261-b12"/>
+    <property name="user.name" value="触殇"/>
+    <property name="path.separator" value=";"/>
+    <property name="os.version" value="10.0"/>
+    <property name="java.endorsed.dirs" value="D:\JAVA\jre\lib\endorsed"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="file.encoding" value="GBK"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="localRepository" value="D:\MavenRepository"/>
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="C:\Users\触殇\AppData\Local\Temp\"/>
+    <property name="idea.version" value="2022.3.2"/>
+    <property name="java.version" value="1.8.0_261"/>
+    <property name="user.dir" value="C:\Users\触殇\Desktop\毕设\Graduationmanagement"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="java.library.path" value="D:\JAVA\jre\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\VanDyke Software\Clients\;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;&quot;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;&quot;;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\Microsoft SQL Server\100\Tools\Binn\;C:\Program Files\Microsoft SQL Server\100\Tools\Binn\;C:\Program Files\Microsoft SQL Server\100\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\100\Tools\Binn\VSShell\Common7\IDE\;C:\Program Files (x86)\Microsoft Visual Studio 9.0\Common7\IDE\PrivateAssemblies\;C:\Program Files (x86)\Microsoft SQL Server\100\DTS\Binn\;D:\SPSS\JRE\bin;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;D:\Mysql8.0.31\mysql-8.0.31-winx64\bin;D:\Graphviz\bin\dot.exe;C:\Program Files (x86)\dotnet\;D:\Git\Git\cmd;D:\vs code\Microsoft VS Code\bin;D:\MinGw\bin;D:\Tomcat\apache-tomcat-9.0.56-windows-x64\apache-tomcat-9.0.56\bin;D:\apache-maven-3.9.0\apache-maven-3.9.0\bin;D:\nodejs\;D:\Anaconda;D:\Anaconda\Library\mingw-w64\bin;D:\Anaconda\Library\usr\bin;D:\Anaconda\Library\bin;D:\Anaconda\Scripts;C:\Users\触殇\AppData\Local\Microsoft\WindowsApps;C:\Users\触殇\.dotnet\tools;D:\PyCharm\PyCharm Community Edition 2021.2.2\bin;;D:\Graphviz\bin;D:\MinGw\bin;D:\IDEA\IntelliJ IDEA 2022.3.2\bin;;D:\Clion\CLion 2022.3.2\bin;;C:\Users\触殇\AppData\Roaming\npm;."/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.version" value="25.261-b12"/>
+    <property name="java.ext.dirs" value="D:\JAVA\jre\lib\ext;C:\WINDOWS\Sun\Java\lib\ext"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="maven.repo.local" value="D:\MavenRepository"/>
+    <property name="java.class.version" value="52.0"/>
+  </properties>
+  <testcase name="deleteGraduate" classname="com.myh.service.GraduateServiceTest" time="0.025">
+    <system-out><![CDATA[DEBUG [main] - Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+]]></system-out>
+    <system-err><![CDATA[五月 06, 2023 3:20:02 下午 org.springframework.test.context.support.AbstractTestContextBootstrapper getDefaultTestExecutionListenerClassNames
+信息: Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+五月 06, 2023 3:20:02 下午 org.springframework.test.context.support.AbstractTestContextBootstrapper getTestExecutionListeners
+信息: Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@5f3a4b84, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@27f723, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@670b40af, org.springframework.test.context.support.DirtiesContextTestExecutionListener@4923ab24, org.springframework.test.context.transaction.TransactionalTestExecutionListener@44c8afef, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@7b69c6ba, org.springframework.test.context.event.EventPublishingTestExecutionListener@46daef40]
+五月 06, 2023 3:20:03 下午 org.mybatis.spring.mapper.ClassPathMapperScanner checkCandidate
+警告: Skipping MapperFactoryBean with name 'auditMapper' and 'com.myh.mapper.AuditMapper' mapperInterface. Bean already defined with the same name!
+五月 06, 2023 3:20:03 下午 org.mybatis.spring.mapper.ClassPathMapperScanner checkCandidate
+警告: Skipping MapperFactoryBean with name 'collegeMapper' and 'com.myh.mapper.CollegeMapper' mapperInterface. Bean already defined with the same name!
+五月 06, 2023 3:20:03 下午 org.mybatis.spring.mapper.ClassPathMapperScanner checkCandidate
+警告: Skipping MapperFactoryBean with name 'companytypeMapper' and 'com.myh.mapper.CompanytypeMapper' mapperInterface. Bean already defined with the same name!
+五月 06, 2023 3:20:03 下午 org.mybatis.spring.mapper.ClassPathMapperScanner checkCandidate
+警告: Skipping MapperFactoryBean with name 'directionMapper' and 'com.myh.mapper.DirectionMapper' mapperInterface. Bean already defined with the same name!
+五月 06, 2023 3:20:03 下午 org.mybatis.spring.mapper.ClassPathMapperScanner checkCandidate
+警告: Skipping MapperFactoryBean with name 'graduateMapper' and 'com.myh.mapper.GraduateMapper' mapperInterface. Bean already defined with the same name!
+五月 06, 2023 3:20:03 下午 org.mybatis.spring.mapper.ClassPathMapperScanner checkCandidate
+警告: Skipping MapperFactoryBean with name 'informationMapper' and 'com.myh.mapper.InformationMapper' mapperInterface. Bean already defined with the same name!
+五月 06, 2023 3:20:03 下午 org.mybatis.spring.mapper.ClassPathMapperScanner checkCandidate
+警告: Skipping MapperFactoryBean with name 'majorMapper' and 'com.myh.mapper.MajorMapper' mapperInterface. Bean already defined with the same name!
+五月 06, 2023 3:20:03 下午 org.mybatis.spring.mapper.ClassPathMapperScanner checkCandidate
+警告: Skipping MapperFactoryBean with name 'managerMapper' and 'com.myh.mapper.ManagerMapper' mapperInterface. Bean already defined with the same name!
+五月 06, 2023 3:20:03 下午 org.mybatis.spring.mapper.ClassPathMapperScanner doScan
+警告: No MyBatis mapper was found in '[com.myh.mapper]' package. Please check your configuration.
+]]></system-err>
+  </testcase>
+  <testcase name="queryByPage" classname="com.myh.service.GraduateServiceTest" time="3.047">
+    <system-out><![CDATA[ INFO [main] - {dataSource-1} inited
+DEBUG [main] - Creating a new SqlSession
+DEBUG [main] - Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@c35172e]
+DEBUG [main] - JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@758a34ce] will be managed by Spring
+DEBUG [main] - ==>  Preparing: SELECT count(0) FROM graduate
+DEBUG [main] - ==> Parameters: 
+DEBUG [main] - <==      Total: 1
+DEBUG [main] - ==>  Preparing: select stuno, grade, password, stuname, sex, idNumber, college, major, direction, place, url, note, lastSaveTime, isInProvince, isCrossExam, isDFC, companyId from graduate LIMIT ?
+DEBUG [main] - ==> Parameters: 5(Integer)
+DEBUG [main] - <==      Total: 5
+DEBUG [main] - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@c35172e]
+DEBUG [main] - Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@c35172e] from current transaction
+DEBUG [main] - ==>  Preparing: select id, college from college where id = ?
+DEBUG [main] - ==> Parameters: null
+DEBUG [main] - <==      Total: 0
+DEBUG [main] - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@c35172e]
+DEBUG [main] - Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@c35172e] from current transaction
+DEBUG [main] - ==>  Preparing: select id, collegeid, major from major where id = ?
+DEBUG [main] - ==> Parameters: null
+DEBUG [main] - <==      Total: 0
+DEBUG [main] - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@c35172e]
+DEBUG [main] - Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@c35172e] from current transaction
+DEBUG [main] - ==>  Preparing: select id, direction from direction where id = ?
+DEBUG [main] - ==> Parameters: null
+DEBUG [main] - <==      Total: 0
+DEBUG [main] - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@c35172e]
+DEBUG [main] - Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@c35172e] from current transaction
+DEBUG [main] - ==>  Preparing: select id, college from college where id = ?
+DEBUG [main] - ==> Parameters: 15(Integer)
+DEBUG [main] - <==      Total: 1
+DEBUG [main] - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@c35172e]
+DEBUG [main] - Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@c35172e] from current transaction
+DEBUG [main] - ==>  Preparing: select id, collegeid, major from major where id = ?
+DEBUG [main] - ==> Parameters: 46(Integer)
+DEBUG [main] - <==      Total: 1
+DEBUG [main] - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@c35172e]
+DEBUG [main] - Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@c35172e] from current transaction
+DEBUG [main] - ==>  Preparing: select id, direction from direction where id = ?
+DEBUG [main] - ==> Parameters: 3(Integer)
+DEBUG [main] - <==      Total: 1
+DEBUG [main] - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@c35172e]
+DEBUG [main] - Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@c35172e] from current transaction
+DEBUG [main] - ==>  Preparing: select id, college from college where id = ?
+DEBUG [main] - ==> Parameters: 4(Integer)
+DEBUG [main] - <==      Total: 1
+DEBUG [main] - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@c35172e]
+DEBUG [main] - Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@c35172e] from current transaction
+DEBUG [main] - ==>  Preparing: select id, collegeid, major from major where id = ?
+DEBUG [main] - ==> Parameters: 14(Integer)
+DEBUG [main] - <==      Total: 1
+DEBUG [main] - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@c35172e]
+DEBUG [main] - Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@c35172e] from current transaction
+DEBUG [main] - ==>  Preparing: select id, direction from direction where id = ?
+DEBUG [main] - ==> Parameters: 6(Integer)
+DEBUG [main] - <==      Total: 1
+DEBUG [main] - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@c35172e]
+DEBUG [main] - Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@c35172e] from current transaction
+DEBUG [main] - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@c35172e]
+DEBUG [main] - Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@c35172e] from current transaction
+DEBUG [main] - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@c35172e]
+DEBUG [main] - Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@c35172e] from current transaction
+DEBUG [main] - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@c35172e]
+DEBUG [main] - Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@c35172e] from current transaction
+DEBUG [main] - ==>  Preparing: select id, college from college where id = ?
+DEBUG [main] - ==> Parameters: 14(Integer)
+DEBUG [main] - <==      Total: 1
+DEBUG [main] - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@c35172e]
+DEBUG [main] - Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@c35172e] from current transaction
+DEBUG [main] - ==>  Preparing: select id, collegeid, major from major where id = ?
+DEBUG [main] - ==> Parameters: 43(Integer)
+DEBUG [main] - <==      Total: 1
+DEBUG [main] - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@c35172e]
+DEBUG [main] - Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@c35172e] from current transaction
+DEBUG [main] - ==>  Preparing: select id, direction from direction where id = ?
+DEBUG [main] - ==> Parameters: 1(Integer)
+DEBUG [main] - <==      Total: 1
+DEBUG [main] - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@c35172e]
+DEBUG [main] - Transaction synchronization committing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@c35172e]
+DEBUG [main] - Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@c35172e]
+DEBUG [main] - Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@c35172e]
+Page{count=true, pageNum=1, pageSize=5, startRow=0, endRow=5, total=4022, pages=805, reasonable=true, pageSizeZero=false}[Graduate{stuno='201830523000', grade=null, password='', stuname='', sex=null, idNumber='null', college=null, major=null, direction=null, place='', url='null', note='null', lastSaveTime=Mon May 01 07:03:36 GMT+08:00 2023, isInProvince=null, isCrossExam=null, isDFC=null, companyId=null, c=null, m=null, d=null}, Graduate{stuno='201830523001', grade=2023, password='0000', stuname='张1', sex=1, idNumber='527444292936510000', college=15, major=46, direction=3, place='', url='null', note='', lastSaveTime=Thu May 04 07:46:32 GMT+08:00 2023, isInProvince=1, isCrossExam=1, isDFC=1, companyId=null, c=com.myh.pojo.College@75459c75, m=com.myh.pojo.Major@183e8023, d=com.myh.pojo.Direction@45efc20d}, Graduate{stuno='201830523002', grade=2022, password='0000', stuname='张2', sex=0, idNumber='669183410134928000', college=4, major=14, direction=6, place='', url='c9a12ea0bda1448f8208396bf3e23d18.jpg', note='', lastSaveTime=Tue Apr 25 00:05:05 GMT+08:00 2023, isInProvince=0, isCrossExam=null, isDFC=null, companyId=null, c=com.myh.pojo.College@3e5499cc, m=com.myh.pojo.Major@67ab1c47, d=com.myh.pojo.Direction@b78a709}, Graduate{stuno='201830523003', grade=null, password='null', stuname='null', sex=null, idNumber='null', college=null, major=null, direction=null, place='null', url='null', note='null', lastSaveTime=Tue Apr 25 00:05:05 GMT+08:00 2023, isInProvince=1, isCrossExam=null, isDFC=null, companyId=null, c=null, m=null, d=null}, Graduate{stuno='201830523004', grade=2023, password='Aa1!123', stuname='asdf', sex=1, idNumber='527444292936510000', college=14, major=43, direction=1, place='', url='0fc68960264f4d9e86e01c8b5f06f186.jpg', note='', lastSaveTime=Sun Apr 30 23:18:45 GMT+08:00 2023, isInProvince=0, isCrossExam=1, isDFC=1, companyId=4, c=com.myh.pojo.College@30bcf3c1, m=com.myh.pojo.Major@2a3c96e3, d=com.myh.pojo.Direction@15cafec7}]
+]]></system-out>
+  </testcase>
+  <testcase name="countByDFC" classname="com.myh.service.GraduateServiceTest" time="0"/>
+  <testcase name="signUp" classname="com.myh.service.GraduateServiceTest" time="0"/>
+  <testcase name="addGraduate" classname="com.myh.service.GraduateServiceTest" time="0"/>
+  <testcase name="deleteGraduates" classname="com.myh.service.GraduateServiceTest" time="0"/>
+  <testcase name="calculateRate" classname="com.myh.service.GraduateServiceTest" time="0"/>
+  <testcase name="login" classname="com.myh.service.GraduateServiceTest" time="0.001"/>
+  <testcase name="updateGraduate" classname="com.myh.service.GraduateServiceTest" time="0"/>
+  <testcase name="testCalculateRate" classname="com.myh.service.GraduateServiceTest" time="0.103">
+    <system-out><![CDATA[DEBUG [main] - Creating a new SqlSession
+DEBUG [main] - Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5b444398]
+DEBUG [main] - JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@758a34ce] will be managed by Spring
+DEBUG [main] - ==>  Preparing: select count(*) from graduate WHERE ( grade = ? )
+DEBUG [main] - ==> Parameters: 2023(Integer)
+DEBUG [main] - <==      Total: 1
+DEBUG [main] - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5b444398]
+DEBUG [main] - Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5b444398] from current transaction
+DEBUG [main] - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5b444398]
+DEBUG [main] - Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5b444398] from current transaction
+DEBUG [main] - ==>  Preparing: select id, direction from direction
+DEBUG [main] - ==> Parameters: 
+DEBUG [main] - <==      Total: 9
+DEBUG [main] - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5b444398]
+DEBUG [main] - Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5b444398] from current transaction
+DEBUG [main] - ==>  Preparing: select count(*) from graduate WHERE ( grade = ? and direction = ? )
+DEBUG [main] - ==> Parameters: 2023(Integer), 0(Integer)
+DEBUG [main] - <==      Total: 1
+DEBUG [main] - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5b444398]
+DEBUG [main] - Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5b444398] from current transaction
+DEBUG [main] - ==>  Preparing: select count(*) from graduate WHERE ( grade = ? and direction = ? )
+DEBUG [main] - ==> Parameters: 2023(Integer), 1(Integer)
+DEBUG [main] - <==      Total: 1
+DEBUG [main] - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5b444398]
+DEBUG [main] - Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5b444398] from current transaction
+DEBUG [main] - ==>  Preparing: select count(*) from graduate WHERE ( grade = ? and direction = ? )
+DEBUG [main] - ==> Parameters: 2023(Integer), 2(Integer)
+DEBUG [main] - <==      Total: 1
+DEBUG [main] - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5b444398]
+DEBUG [main] - Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5b444398] from current transaction
+DEBUG [main] - ==>  Preparing: select count(*) from graduate WHERE ( grade = ? and direction = ? )
+DEBUG [main] - ==> Parameters: 2023(Integer), 3(Integer)
+DEBUG [main] - <==      Total: 1
+DEBUG [main] - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5b444398]
+DEBUG [main] - Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5b444398] from current transaction
+DEBUG [main] - ==>  Preparing: select count(*) from graduate WHERE ( grade = ? and direction = ? )
+DEBUG [main] - ==> Parameters: 2023(Integer), 4(Integer)
+DEBUG [main] - <==      Total: 1
+DEBUG [main] - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5b444398]
+DEBUG [main] - Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5b444398] from current transaction
+DEBUG [main] - ==>  Preparing: select count(*) from graduate WHERE ( grade = ? and direction = ? )
+DEBUG [main] - ==> Parameters: 2023(Integer), 5(Integer)
+DEBUG [main] - <==      Total: 1
+DEBUG [main] - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5b444398]
+DEBUG [main] - Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5b444398] from current transaction
+DEBUG [main] - ==>  Preparing: select count(*) from graduate WHERE ( grade = ? and direction = ? )
+DEBUG [main] - ==> Parameters: 2023(Integer), 6(Integer)
+DEBUG [main] - <==      Total: 1
+DEBUG [main] - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5b444398]
+DEBUG [main] - Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5b444398] from current transaction
+DEBUG [main] - ==>  Preparing: select count(*) from graduate WHERE ( grade = ? and direction = ? )
+DEBUG [main] - ==> Parameters: 2023(Integer), 7(Integer)
+DEBUG [main] - <==      Total: 1
+DEBUG [main] - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5b444398]
+DEBUG [main] - Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5b444398] from current transaction
+DEBUG [main] - ==>  Preparing: select count(*) from graduate WHERE ( grade = ? and direction = ? )
+DEBUG [main] - ==> Parameters: 2023(Integer), 8(Integer)
+DEBUG [main] - <==      Total: 1
+DEBUG [main] - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5b444398]
+DEBUG [main] - Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5b444398] from current transaction
+DEBUG [main] - ==>  Preparing: select count(*) from graduate WHERE ( grade = ? and direction = ? and isDFC = ? )
+DEBUG [main] - ==> Parameters: 2023(Integer), 3(Integer), 1(Integer)
+DEBUG [main] - <==      Total: 1
+DEBUG [main] - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5b444398]
+DEBUG [main] - Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5b444398] from current transaction
+DEBUG [main] - ==>  Preparing: select count(*) from graduate WHERE ( grade = ? and direction = ? and isDFC = ? )
+DEBUG [main] - ==> Parameters: 2023(Integer), 3(Integer), 0(Integer)
+DEBUG [main] - <==      Total: 1
+DEBUG [main] - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5b444398]
+DEBUG [main] - Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5b444398] from current transaction
+DEBUG [main] - ==>  Preparing: select count(*) from graduate WHERE ( grade = ? and direction = ? and isCrossExam = ? )
+DEBUG [main] - ==> Parameters: 2023(Integer), 3(Integer), 1(Integer)
+DEBUG [main] - <==      Total: 1
+DEBUG [main] - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5b444398]
+DEBUG [main] - Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5b444398] from current transaction
+DEBUG [main] - ==>  Preparing: select count(*) from graduate WHERE ( grade = ? and direction = ? and isCrossExam = ? )
+DEBUG [main] - ==> Parameters: 2023(Integer), 3(Integer), 0(Integer)
+DEBUG [main] - <==      Total: 1
+DEBUG [main] - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5b444398]
+DEBUG [main] - Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5b444398] from current transaction
+DEBUG [main] - ==>  Preparing: select id, companyType from companytype
+DEBUG [main] - ==> Parameters: 
+DEBUG [main] - <==      Total: 5
+DEBUG [main] - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5b444398]
+DEBUG [main] - Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5b444398] from current transaction
+DEBUG [main] - ==>  Preparing: select count(*) from graduate WHERE ( grade = ? and direction in ( ? , ? ) and companyId = ? )
+DEBUG [main] - ==> Parameters: 2023(Integer), 1(Integer), 2(Integer), 1(Integer)
+DEBUG [main] - <==      Total: 1
+DEBUG [main] - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5b444398]
+DEBUG [main] - Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5b444398] from current transaction
+DEBUG [main] - ==>  Preparing: select count(*) from graduate WHERE ( grade = ? and direction in ( ? , ? ) and companyId = ? )
+DEBUG [main] - ==> Parameters: 2023(Integer), 1(Integer), 2(Integer), 2(Integer)
+DEBUG [main] - <==      Total: 1
+DEBUG [main] - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5b444398]
+DEBUG [main] - Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5b444398] from current transaction
+DEBUG [main] - ==>  Preparing: select count(*) from graduate WHERE ( grade = ? and direction in ( ? , ? ) and companyId = ? )
+DEBUG [main] - ==> Parameters: 2023(Integer), 1(Integer), 2(Integer), 3(Integer)
+DEBUG [main] - <==      Total: 1
+DEBUG [main] - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5b444398]
+DEBUG [main] - Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5b444398] from current transaction
+DEBUG [main] - ==>  Preparing: select count(*) from graduate WHERE ( grade = ? and direction in ( ? , ? ) and companyId = ? )
+DEBUG [main] - ==> Parameters: 2023(Integer), 1(Integer), 2(Integer), 4(Integer)
+DEBUG [main] - <==      Total: 1
+DEBUG [main] - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5b444398]
+DEBUG [main] - Fetched SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5b444398] from current transaction
+DEBUG [main] - ==>  Preparing: select count(*) from graduate WHERE ( grade = ? and direction in ( ? , ? ) and companyId = ? )
+DEBUG [main] - ==> Parameters: 2023(Integer), 1(Integer), 2(Integer), 5(Integer)
+DEBUG [main] - <==      Total: 1
+DEBUG [main] - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5b444398]
+DEBUG [main] - Transaction synchronization committing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5b444398]
+DEBUG [main] - Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5b444398]
+DEBUG [main] - Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5b444398]
+RateVO{total=2000, totalOfQueryVO=2000, Count={应征义务兵=269, 出国(境)=239, 劳动合同就业=243, 其他录用形式就业=249, 升学=249, 基层项目=257, 未就业=131, 待定=97, 自主创业=266}, Rate={应征义务兵=0.13, 出国(境)=0.12, 劳动合同就业=0.12, 其他录用形式就业=0.12, 升学=0.12, 基层项目=0.13, 未就业=0.07, 待定=0.05, 自主创业=0.13}}
+]]></system-out>
+  </testcase>
+  <testcase name="countByCE" classname="com.myh.service.GraduateServiceTest" time="0"/>
+  <testcase name="queryByStuno" classname="com.myh.service.GraduateServiceTest" time="0.001"/>
+  <testcase name="countByCompanyType" classname="com.myh.service.GraduateServiceTest" time="0.001"/>
+  <testcase name="countByDirection" classname="com.myh.service.GraduateServiceTest" time="0"/>
+</testsuite>

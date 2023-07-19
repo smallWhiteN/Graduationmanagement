@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <script type="text/javascript" src="/js/jquery-1.12.4.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.js" ></script>
+    <link  rel="stylesheet" type="text/css" href="/css/bootstrap.css"></link>
+    <link  rel="stylesheet" type="text/css" href="/css/style.css"></link>
+    <link rel="stylesheet" href="/layui/css/layui.css"    media="all">
+    <link rel="stylesheet" href="/css/pie.css" >
+    <title>历届升学率就业率</title>
+</head>
+<body>
+<div class="layui-container" style="padding: 50px">
+    <div id="rate"></div>
+
+</div>
+</body>
+<script>
+    $(function (){
+        statistics();
+    })
+    function statistics() {
+        $.ajax({
+            type: "GET",
+            url: "/information/all",
+            data: null,
+            dataType:"json",
+            success: function(vo){
+                let list=vo.list;
+                let str="";
+                for(let i=list.length-1;i>=0;i--){
+                    str+='<div style="padding: 10px">\n' +
+                        '            <span >'+list[i].year+'年</span>\n' +
+                        '            <div class="layui-inline">\n' +
+                        '                <div>\n' +
+                        '                    <div class="pie animate" style="--p:'+list[i].enrolmentRate+';--c:lightgreen"> '+list[i].enrolmentRate+'%</div>\n' +
+                        '                    <div style="text-align: center;padding-top: 5px">升学率</div>\n' +
+                        '                </div>\n' +
+                        '            </div>\n' +
+                        '            <div class="layui-inline" style="padding-left: 20px">\n' +
+                        '                <div>\n' +
+                        '                    <div class="pie animate" style="--p:'+ list[i].employmentRate+';--c:blue"> '+list[i].employmentRate+'%</div>\n' +
+                        '                    <div  style="text-align: center;padding-top: 5px">就业率</div>\n' +
+                        '                </div>\n' +
+                        '            </div>\n' +
+                        '        </div>';
+                }
+                $("#rate").html(str);
+            }
+        });
+    }
+</script>
+</html>

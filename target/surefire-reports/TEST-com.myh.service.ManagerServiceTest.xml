@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.myh.service.ManagerServiceTest" time="0.013" tests="1" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="sun.desktop" value="windows"/>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="java.specification.version" value="1.8"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+    <property name="sun.jnu.encoding" value="GBK"/>
+    <property name="java.class.path" value="C:\Users\触殇\Desktop\毕设\Graduationmanagement\target\test-classes;C:\Users\触殇\Desktop\毕设\Graduationmanagement\target\classes;D:\MavenRepository\org\springframework\spring-webmvc\5.2.13.RELEASE\spring-webmvc-5.2.13.RELEASE.jar;D:\MavenRepository\org\springframework\spring-aop\5.2.13.RELEASE\spring-aop-5.2.13.RELEASE.jar;D:\MavenRepository\org\springframework\spring-beans\5.2.13.RELEASE\spring-beans-5.2.13.RELEASE.jar;D:\MavenRepository\org\springframework\spring-context\5.2.13.RELEASE\spring-context-5.2.13.RELEASE.jar;D:\MavenRepository\org\springframework\spring-core\5.2.13.RELEASE\spring-core-5.2.13.RELEASE.jar;D:\MavenRepository\org\springframework\spring-jcl\5.2.13.RELEASE\spring-jcl-5.2.13.RELEASE.jar;D:\MavenRepository\org\springframework\spring-expression\5.2.13.RELEASE\spring-expression-5.2.13.RELEASE.jar;D:\MavenRepository\org\springframework\spring-web\5.2.13.RELEASE\spring-web-5.2.13.RELEASE.jar;D:\MavenRepository\org\springframework\spring-tx\5.2.13.RELEASE\spring-tx-5.2.13.RELEASE.jar;D:\MavenRepository\org\springframework\spring-jdbc\5.2.13.RELEASE\spring-jdbc-5.2.13.RELEASE.jar;D:\MavenRepository\org\springframework\spring-aspects\5.2.13.RELEASE\spring-aspects-5.2.13.RELEASE.jar;D:\MavenRepository\org\aspectj\aspectjweaver\1.9.6\aspectjweaver-1.9.6.jar;D:\MavenRepository\commons-fileupload\commons-fileupload\1.3.1\commons-fileupload-1.3.1.jar;D:\MavenRepository\commons-io\commons-io\2.2\commons-io-2.2.jar;D:\MavenRepository\org\mybatis\mybatis\3.5.6\mybatis-3.5.6.jar;D:\MavenRepository\org\mybatis\mybatis-spring\1.3.3\mybatis-spring-1.3.3.jar;D:\MavenRepository\com\github\pagehelper\pagehelper\5.1.10\pagehelper-5.1.10.jar;D:\MavenRepository\com\github\jsqlparser\jsqlparser\2.0\jsqlparser-2.0.jar;D:\MavenRepository\mysql\mysql-connector-java\8.0.23\mysql-connector-java-8.0.23.jar;D:\MavenRepository\com\google\protobuf\protobuf-java\3.11.4\protobuf-java-3.11.4.jar;D:\MavenRepository\com\alibaba\druid\1.2.3\druid-1.2.3.jar;D:\MavenRepository\javax\servlet\javax.servlet-api\4.0.1\javax.servlet-api-4.0.1.jar;D:\MavenRepository\com\fasterxml\jackson\core\jackson-databind\2.9.6\jackson-databind-2.9.6.jar;D:\MavenRepository\com\fasterxml\jackson\core\jackson-annotations\2.9.0\jackson-annotations-2.9.0.jar;D:\MavenRepository\com\fasterxml\jackson\core\jackson-core\2.9.6\jackson-core-2.9.6.jar;D:\MavenRepository\log4j\log4j\1.2.17\log4j-1.2.17.jar;D:\MavenRepository\junit\junit\4.12\junit-4.12.jar;D:\MavenRepository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;D:\MavenRepository\org\springframework\spring-test\5.2.13.RELEASE\spring-test-5.2.13.RELEASE.jar;D:\MavenRepository\javax\annotation\javax.annotation-api\1.3.2\javax.annotation-api-1.3.2.jar;"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="user.variant" value=""/>
+    <property name="java.vendor.url" value="http://java.oracle.com/"/>
+    <property name="user.timezone" value="GMT+08:00"/>
+    <property name="java.vm.specification.version" value="1.8"/>
+    <property name="os.name" value="Windows 10"/>
+    <property name="user.country" value="CN"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.boot.library.path" value="D:\JAVA\jre\bin"/>
+    <property name="sun.java.command" value="C:\Users\触殇\AppData\Local\Temp\surefire8740338211690150793\surefirebooter-20230506152000928_3.jar C:\Users\触殇\AppData\Local\Temp\surefire8740338211690150793 2023-05-06T15-19-59_414-jvmRun1 surefire-20230506152000928_1tmp surefire_0-20230506152000928_2tmp"/>
+    <property name="surefire.test.class.path" value="C:\Users\触殇\Desktop\毕设\Graduationmanagement\target\test-classes;C:\Users\触殇\Desktop\毕设\Graduationmanagement\target\classes;D:\MavenRepository\org\springframework\spring-webmvc\5.2.13.RELEASE\spring-webmvc-5.2.13.RELEASE.jar;D:\MavenRepository\org\springframework\spring-aop\5.2.13.RELEASE\spring-aop-5.2.13.RELEASE.jar;D:\MavenRepository\org\springframework\spring-beans\5.2.13.RELEASE\spring-beans-5.2.13.RELEASE.jar;D:\MavenRepository\org\springframework\spring-context\5.2.13.RELEASE\spring-context-5.2.13.RELEASE.jar;D:\MavenRepository\org\springframework\spring-core\5.2.13.RELEASE\spring-core-5.2.13.RELEASE.jar;D:\MavenRepository\org\springframework\spring-jcl\5.2.13.RELEASE\spring-jcl-5.2.13.RELEASE.jar;D:\MavenRepository\org\springframework\spring-expression\5.2.13.RELEASE\spring-expression-5.2.13.RELEASE.jar;D:\MavenRepository\org\springframework\spring-web\5.2.13.RELEASE\spring-web-5.2.13.RELEASE.jar;D:\MavenRepository\org\springframework\spring-tx\5.2.13.RELEASE\spring-tx-5.2.13.RELEASE.jar;D:\MavenRepository\org\springframework\spring-jdbc\5.2.13.RELEASE\spring-jdbc-5.2.13.RELEASE.jar;D:\MavenRepository\org\springframework\spring-aspects\5.2.13.RELEASE\spring-aspects-5.2.13.RELEASE.jar;D:\MavenRepository\org\aspectj\aspectjweaver\1.9.6\aspectjweaver-1.9.6.jar;D:\MavenRepository\commons-fileupload\commons-fileupload\1.3.1\commons-fileupload-1.3.1.jar;D:\MavenRepository\commons-io\commons-io\2.2\commons-io-2.2.jar;D:\MavenRepository\org\mybatis\mybatis\3.5.6\mybatis-3.5.6.jar;D:\MavenRepository\org\mybatis\mybatis-spring\1.3.3\mybatis-spring-1.3.3.jar;D:\MavenRepository\com\github\pagehelper\pagehelper\5.1.10\pagehelper-5.1.10.jar;D:\MavenRepository\com\github\jsqlparser\jsqlparser\2.0\jsqlparser-2.0.jar;D:\MavenRepository\mysql\mysql-connector-java\8.0.23\mysql-connector-java-8.0.23.jar;D:\MavenRepository\com\google\protobuf\protobuf-java\3.11.4\protobuf-java-3.11.4.jar;D:\MavenRepository\com\alibaba\druid\1.2.3\druid-1.2.3.jar;D:\MavenRepository\javax\servlet\javax.servlet-api\4.0.1\javax.servlet-api-4.0.1.jar;D:\MavenRepository\com\fasterxml\jackson\core\jackson-databind\2.9.6\jackson-databind-2.9.6.jar;D:\MavenRepository\com\fasterxml\jackson\core\jackson-annotations\2.9.0\jackson-annotations-2.9.0.jar;D:\MavenRepository\com\fasterxml\jackson\core\jackson-core\2.9.6\jackson-core-2.9.6.jar;D:\MavenRepository\log4j\log4j\1.2.17\log4j-1.2.17.jar;D:\MavenRepository\junit\junit\4.12\junit-4.12.jar;D:\MavenRepository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;D:\MavenRepository\org\springframework\spring-test\5.2.13.RELEASE\spring-test-5.2.13.RELEASE.jar;D:\MavenRepository\javax\annotation\javax.annotation-api\1.3.2\javax.annotation-api-1.3.2.jar;"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="C:\Users\触殇"/>
+    <property name="user.language" value="zh"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.home" value="D:\JAVA\jre"/>
+    <property name="basedir" value="C:\Users\触殇\Desktop\毕设\Graduationmanagement"/>
+    <property name="file.separator" value="\"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
+    <property name="surefire.real.class.path" value="C:\Users\触殇\AppData\Local\Temp\surefire8740338211690150793\surefirebooter-20230506152000928_3.jar"/>
+    <property name="sun.boot.class.path" value="D:\JAVA\jre\lib\resources.jar;D:\JAVA\jre\lib\rt.jar;D:\JAVA\jre\lib\sunrsasign.jar;D:\JAVA\jre\lib\jsse.jar;D:\JAVA\jre\lib\jce.jar;D:\JAVA\jre\lib\charsets.jar;D:\JAVA\jre\lib\jfr.jar;D:\JAVA\jre\classes"/>
+    <property name="user.script" value=""/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="1.8.0_261-b12"/>
+    <property name="user.name" value="触殇"/>
+    <property name="path.separator" value=";"/>
+    <property name="os.version" value="10.0"/>
+    <property name="java.endorsed.dirs" value="D:\JAVA\jre\lib\endorsed"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="file.encoding" value="GBK"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="localRepository" value="D:\MavenRepository"/>
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="C:\Users\触殇\AppData\Local\Temp\"/>
+    <property name="idea.version" value="2022.3.2"/>
+    <property name="java.version" value="1.8.0_261"/>
+    <property name="user.dir" value="C:\Users\触殇\Desktop\毕设\Graduationmanagement"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="java.library.path" value="D:\JAVA\jre\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\VanDyke Software\Clients\;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;&quot;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;&quot;;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\Microsoft SQL Server\100\Tools\Binn\;C:\Program Files\Microsoft SQL Server\100\Tools\Binn\;C:\Program Files\Microsoft SQL Server\100\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\100\Tools\Binn\VSShell\Common7\IDE\;C:\Program Files (x86)\Microsoft Visual Studio 9.0\Common7\IDE\PrivateAssemblies\;C:\Program Files (x86)\Microsoft SQL Server\100\DTS\Binn\;D:\SPSS\JRE\bin;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;D:\Mysql8.0.31\mysql-8.0.31-winx64\bin;D:\Graphviz\bin\dot.exe;C:\Program Files (x86)\dotnet\;D:\Git\Git\cmd;D:\vs code\Microsoft VS Code\bin;D:\MinGw\bin;D:\Tomcat\apache-tomcat-9.0.56-windows-x64\apache-tomcat-9.0.56\bin;D:\apache-maven-3.9.0\apache-maven-3.9.0\bin;D:\nodejs\;D:\Anaconda;D:\Anaconda\Library\mingw-w64\bin;D:\Anaconda\Library\usr\bin;D:\Anaconda\Library\bin;D:\Anaconda\Scripts;C:\Users\触殇\AppData\Local\Microsoft\WindowsApps;C:\Users\触殇\.dotnet\tools;D:\PyCharm\PyCharm Community Edition 2021.2.2\bin;;D:\Graphviz\bin;D:\MinGw\bin;D:\IDEA\IntelliJ IDEA 2022.3.2\bin;;D:\Clion\CLion 2022.3.2\bin;;C:\Users\触殇\AppData\Roaming\npm;."/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.version" value="25.261-b12"/>
+    <property name="java.ext.dirs" value="D:\JAVA\jre\lib\ext;C:\WINDOWS\Sun\Java\lib\ext"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="maven.repo.local" value="D:\MavenRepository"/>
+    <property name="java.class.version" value="52.0"/>
+  </properties>
+  <testcase name="login" classname="com.myh.service.ManagerServiceTest" time="0.006">
+    <system-out><![CDATA[DEBUG [main] - Creating a new SqlSession
+DEBUG [main] - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@12bcd0c0] was not registered for synchronization because synchronization is not active
+DEBUG [main] - JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@758a34ce] will not be managed by Spring
+DEBUG [main] - ==>  Preparing: select id, user, password, realName from manager WHERE ( user = ? and password = ? )
+DEBUG [main] - ==> Parameters: myh(String), 1=1 (String)
+DEBUG [main] - <==      Total: 0
+DEBUG [main] - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@12bcd0c0]
+null
+]]></system-out>
+    <system-err><![CDATA[五月 06, 2023 3:20:07 下午 org.springframework.test.context.support.AbstractTestContextBootstrapper getDefaultTestExecutionListenerClassNames
+信息: Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+五月 06, 2023 3:20:07 下午 org.springframework.test.context.support.AbstractTestContextBootstrapper getTestExecutionListeners
+信息: Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@75c9e76b, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@7446d8d5, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@5c3b6c6e, org.springframework.test.context.support.DirtiesContextTestExecutionListener@4fbda97b, org.springframework.test.context.transaction.TransactionalTestExecutionListener@75f5fd58, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@37b70343, org.springframework.test.context.event.EventPublishingTestExecutionListener@306851c7]
+]]></system-err>
+  </testcase>
+</testsuite>

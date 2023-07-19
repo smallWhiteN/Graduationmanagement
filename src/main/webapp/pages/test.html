@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<script src="/js/jquery-1.12.4.js"></script>
+</head>
+<body>
+<input name="lastSaveTime" type="text" class="form-control" id="lastSaveTime" readonly>
+</body>
+
+<script>
+    var timestramp = 1681761089000;
+    function TimestampToDate(Timestamp) {
+        let date1 = new Date(Timestamp-8 * 60 * 60 * 1000);
+        return date1.toLocaleDateString().replace(/\//g, "-") + " " + date1.toTimeString().substr(0, 8);
+    }
+    $(function () {
+        $("#lastSaveTime").val(TimestampToDate(timestramp));
+    })
+</script>
+</html>

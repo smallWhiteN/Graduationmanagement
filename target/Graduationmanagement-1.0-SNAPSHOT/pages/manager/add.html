@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>添加学生信息</title>
+		<script type="text/javascript" src="/js/jquery-1.12.4.js"></script>
+		<script type="text/javascript" src="/js/bootstrap.js"></script>
+		<script type="text/javascript" src="/layui/layui.js"></script>
+
+		<link rel="stylesheet" type="text/css" href="/css/bootstrap.css"></link>
+		<link rel="stylesheet" type="text/css" href="/css/style.css"></link>
+		<link rel="stylesheet" type="text/css" href="/layui/css/layui.css"></link>
+
+		<style>
+			label span{color: #ff0000; padding-right: 5px;}
+		</style>
+	</head>
+
+	<body>
+		<h2 style="padding: 20px">添加学生信息</h2>
+		<form id="myForm" class="form-horizontal">
+			<div class="form-group">
+				<label class="col-sm-2 control-label"><span>*</span>学生学号</label>
+				<div class="col-sm-9">
+					<input name="stuno"  type="text" class="form-control"/>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label">密码</label>
+				<div class="col-sm-9">
+					<input required name="password" class="form-control" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label">学生姓名</label>
+				<div class="col-sm-9">
+					<input required name="stuname" class="form-control" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label">学院</label>
+				<div class="col-sm-9">
+					<select required name="college" class="form-control" ></select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label">专业</label>
+				<div class="col-sm-9">
+					<select required name="major" class="form-control" ></select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label">地址</label>
+				<div class="col-sm-9">
+					<input name="place" class="form-control"/>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label"></label>
+				<div class="col-sm-9">
+					<button id="btnAdd" type="button" class="btn btn-sm btn-success">添&nbsp;加</button>
+					<button type="reset"  class="btn btn-sm btn-warning">重&nbsp;置</button>
+					<button id="back" type="button" class="btn btn-sm btn-info">返&nbsp;回</button>
+				</div>
+			</div>
+		</form>		
+	</body>
+</html>
+<script>
+	String.prototype.GetValue= function(para) {
+		let reg = new RegExp("(^|&)"+ para +"=([^&]*)(&|$)");
+		let r = this.substr(this.indexOf("\?")+1).match(reg);
+		if (r!=null) return unescape(r[2]); return null;
+	}
+
+	function isValid() {
+		if(sessionStorage["role"]!="manager"){
+			location.href=('/pages/manager/illegal.html');
+		}
+	}
+
+	$(function () {
+		isValid();
+		loadMajor();
+		loadCollege();
+		$(document).keydown(function(event){
+			if(event.keyCode==13){
+				document.getElementById("btnAdd").click();
+			}
+		});
+		$("#btnAdd").click(function () {
+			let stunoReg= /^20\d{10}$/;
+			let stuno=$("input[name=stuno]").val();
+			if(!stunoReg.test(stuno)){
+				layer.alert('学号格式错误', {
+					icon: 2,
+					skin: 'layer-ext-demo',
+				});
+				return false;
+			}
+			$.ajax({
+				type: "POST",//这里必须写POST
+				url: "/graduate/",
+				data: $("#myForm").serialize(),
+				dataType:"json",
+				success: function(vo){
+					if(vo.code==200) {
+						layer.alert("添加成功",{icon:1});
+						setTimeout(function () {
+							location.href = "/pages/manager/stuList.html";
+						}, 3000);
+
+					}else{
+						alert("添加失败！"+vo.msg);
+					}
+				},error:function (){
+					layer.alert('该学号已存在',{icon: 2});
+				}
+			});
+		});
+		$("#back").click(function (){
+			location.href=("/pages/manager/stuList.html");
+		})
+	});
+	function loadMajor(){
+		$.ajax({
+			type: "GET",
+			url: "/major/all",
+			data: null,
+			dataType:"json",
+			success: function(vo){
+				let list=vo.list;
+				let str="";
+				str+='<option value=0>请选择专业</option>';
+				for(let i=0;i<list.length;i++){
+					str+='<option value='+list[i].id+'>'+list[i].major+'</option>';
+				}
+				$("select[name=major]").html(str);
+				//填充分页数据
+			}
+		});
+	}
+	function loadCollege(){
+		$.ajax({
+			type: "GET",
+			url: "/college/all",
+			data: null,
+			dataType:"json",
+			success: function(vo){
+				let list=vo.list;
+				let str="";
+				str+='<option value=0>请选择学院</option>';
+				for(let i=0;i<list.length;i++){
+					str+='<option value='+list[i].id+'>'+list[i].college+'</option>';
+				}
+				$("select[name=college]").html(str);
+				//填充分页数据
+			}
+		});
+	}
+
+</script>

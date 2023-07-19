@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>审核列表</title>
+	<script type="text/javascript" src="/js/jquery-1.12.4.js"></script>
+	<script type="text/javascript" src="/js/bootstrap.js" ></script>
+	<script type="text/javascript" src="/layui/layui.js"></script>
+	<link type="text/css" href="layui/css/layui.css">
+	<link  rel="stylesheet" type="text/css" href="/css/bootstrap.css"></link>
+	<link  rel="stylesheet" type="text/css" href="/css/style.css"></link>
+	<style>
+		span{
+			color: #1EABFF;
+			padding: 0 5px;
+		}
+	</style>
+	<style type="text/css">
+		*{
+			margin:0px;
+			padding:0px;
+		}
+		/* 触发弹窗图片的样式 */
+		.myImg {
+			cursor: pointer;
+		}
+
+		/* 弹窗的位置和背景颜色 */
+		.modal {
+			display: none;
+			position: fixed; /* 绝对定位 */
+			z-index: 1; /* 元素置前 */
+			padding-top: 50px;
+			width: 100%;
+			height: 100%;
+			overflow: auto; /* 溢出出现滚动条 */
+		}
+
+		/* 弹窗图片的大小 */
+		.content {
+			margin: auto;
+			display: block;
+			min-height:400px;
+			max-width: 1000px;
+			max-height:1000px;
+		}
+	</style>
+</head>
+<body>
+<form id="myForm" class="form-horizontal">
+	<h2>审核列表</h2>
+<!--	<div class="searchDiv">-->
+<!--&lt;!&ndash;		<button class="btn btn-danger" id="deleteAll">批量删除</button>&ndash;&gt;-->
+<!--		<a href="/pages/manager/add.html" class="btn btn-success">添加</a>-->
+<!--		学生学号:<input name="stuno" placeholder="学号"/>-->
+<!--		学生姓名:<input name="stuname" placeholder="学生姓名"/>-->
+<!--		学院:<select id="college" name="college"></select>-->
+<!--		专业:<select id="major" name="major"></select>-->
+<!--		去向:<select id="direction" name="direction"></select>-->
+<!--		<button type="button" onclick="loadData()" class="btn btn-info">查询</button>-->
+<!--		<button type="reset" class="btn btn-warning">重置</button>-->
+<!--	</div>-->
+	<table class="table table-bordered table-striped">
+		<thead>
+		<div class="imgPreview">
+			<img src="#" alt="" id="imgPreview">
+		</div>
+		<tr>
+<!--			<th>全选<input type="checkbox" id="all"/></th>-->
+			<th>学生学号</th>
+			<th>学生姓名</th>
+			<th>学院</th>
+			<th>专业</th>
+			<th>去向</th>
+			<th>凭证</th>
+			<th>操作</th>
+		</tr>
+		</thead>
+		<tbody id="tboby">
+
+		</tbody>
+		<div id="myModal" class="modal" onclick="document.getElementById('myModal').style.display='none'">
+			<!-- 弹窗内容 -->
+			<img class="content" id="img01">
+		</div>
+
+	</table>
+	<!--分页部分-->
+	<div class="form-group">
+		<div class="col-sm-3" style="text-align: right">
+			<ul class="pagination" style="margin: 0;">
+				<li name="pageLi" id="firstPage"><a href="javascript:void(0)">首页</a></li>
+				<li name="pageLi" id="prePage"><a href="javascript:void(0)">上一页</a></li>
+				<li name="pageLi" id="nextPage"><a href="javascript:void(0)">下一页</a></li>
+				<li name="pageLi" id="lastPage"><a href="javascript:void(0)">末页</a></li>
+			</ul>
+		</div>
+		<label class="control-label col-sm-3" style="text-align: right" >
+			共<span id="total"></span>条数据，共<span id="pages"></span>页
+		</label>
+		<label class="control-label col-sm-1" style="text-align: right" >
+			每页显示
+		</label>
+		<div   class="col-sm-1" style="text-align: right; padding:0;margin: 0" >
+			<select class="form-control" name="pageSize">
+				<option value="5">5</option>
+				<option value="10">10</option>
+				<option value="15">15</option>
+			</select>
+		</div>
+		<label class="control-label col-sm-1" style="text-align: left;width: 87px;padding: 8px 5px;" >
+			条数据
+		</label>
+		<label class="control-label col-sm-1" style="text-align: right" >
+			跳转到第
+		</label>
+		<div   class="col-sm-1" style="text-align: right; padding:0;margin: 0" ><input class="form-control" name="pageNum" value="1" /></div>
+		<label class="control-label col-sm-1" style="text-align: left">页</label>
+	</div>
+</form>
+</body>
+
+</html>
+<script>
+	function demo(imgId) {
+		document.getElementById('myModal').style.display = "block";
+		document.getElementById("img01").src = document.getElementById(imgId).src;
+	}
+</script>
+<script>
+	//页面加载完毕之后发送异步请求
+	$(function(){
+		isValid();
+		loadData();
+		$("ul[class='pagination']>li").click(function(){
+			if(($(this).attr("class"))=='disabled')
+				return;
+			let num=$(this).attr("name");
+			$("input[name='pageNum']").val(num);
+			loadData();
+		});
+
+	});
+	function rejectReq(stuno){
+		layer.prompt({title: '请填写驳回理由', formType: 2}, function(text, index){
+			layer.close(index);
+			layer.msg('驳回成功<br>您的驳回理由是：'+text);
+			$.ajax({
+				type:"POST",
+				url:"/audit/"+stuno,
+				data:{"_method":"delete","msg":text},
+				dataType: "json",
+				success:function (vo) {
+					location.href=("/pages/manager/audit.html");
+				}
+			});
+		});
+	}
+	function acceptReq(stuno) {
+		$.ajax({
+			type:"POST",
+			url:"/audit/"+stuno,
+			data:{"_method":"put"},
+			dataType: "json",
+			success:function (vo) {
+				location.href=("/pages/manager/audit.html");
+			}
+		});
+	}
+	function isValid() {
+		if(sessionStorage["role"]!="manager"){
+			location.href=('/pages/manager/illegal.html');
+		}
+	}
+	//填充分页信息
+	function fillPageData(pageInfo) {
+		//填充信息
+		$("#total").html(pageInfo.total);
+		$("#pages").html(pageInfo.pages);
+		$("input[name='pageNum']").val(pageInfo.pageNum);
+		$("select[name='pageSize']").val(pageInfo.pageSize);
+		//设置按钮的属性值和样式
+		$("#firstPage").attr("name",1);
+		$("#prePage").attr("name",pageInfo.prePage);
+		$("#nextPage").attr("name",pageInfo.nextPage);
+		$("#lastPage").attr("name",pageInfo.pages);
+		$("#firstPage").removeClass("disabled");
+		$("#prePage").removeClass("disabled");
+		$("#nextPage").removeClass("disabled");
+		$("#lastPage").removeClass("disabled");
+		if(pageInfo.isFirstPage){//如果是第一页：上一页和首页禁用
+			$("#firstPage").addClass("disabled");
+			$("#prePage").addClass("disabled");
+		}
+		if(pageInfo.isLastPage){//如果已经是最后一页：下一页和末页禁用
+			$("#nextPage").addClass("disabled");
+			$("#lastPage").addClass("disabled");
+		}
+	}
+	//上传图片按钮
+	String.prototype.GetValue= function(para) {
+		let reg = new RegExp("(^|&)"+ para +"=([^&]*)(&|$)");
+		let r = this.substr(this.indexOf("\?")+1).match(reg);
+		if (r!=null) return unescape(r[2]); return null;
+	}
+	function loadData(){
+		$.ajax({
+			type: "GET",
+			url: "/audit/list",
+			data: $("#myForm").serialize(),//主要是分页和多条件参数数据
+			dataType:"json",
+			success: function(vo){
+				let list=vo.pageInfo.list;
+				let str="";
+				for(let i=0;i<list.length;i++){
+					let stuno=list[i].stuno;
+					let stuname=list[i].stuname;
+					let college=list[i].c.college;
+					let major=list[i].m.major;
+					let direction=list[i].d.direction;
+                    let url=list[i].url;
+					// let isDel=obj.isDel;
+					// let btnStr="";
+					// if(isDel==0){
+                    let btnStr='<button  type="button" name="accept" class="btn btn-sm btn-success" onclick="acceptReq('+stuno+')">同意</button>&nbsp;' +
+							'<button type="button" name="delete" class="btn btn-sm btn-danger" onclick="rejectReq('+stuno+')">驳回</button>&nbsp;'+
+							'<button type="button" name="getDetail" class="btn btn-sm btn-info" onclick="loadByStuno('+stuno+')">详情</button>&nbsp;';
+					// 			'<button type="button" name="uploadBtn" class="btn btn-sm btn-info" onclick="uploadLogo('+teamId+')">上传图片</button>';
+					// }else{
+					// 	btnStr='<button name="deleteBtn" class="btn btn-sm btn-danger disabled">已删除</button>';
+					// }
+					str+='<tr>' +
+							// '            <td><input type="checkbox" name="stuno" value="'+stuno+'"/></td>' +
+							'            <td>'+stuno+'</td>' +
+							'            <td>'+stuname+'</td>' +
+							'            <td>'+college+'</td>' +
+							'            <td>'+major+'</td>' +
+							'            <td>'+direction+'</td>' ;
+					if(url==null || url==""){
+						str+='<td>未上传材料</td>';
+					}else{
+						str+='<td>' +
+								'<img loading="lazy" id="Img'+i+'" class="myImg" style="width: 100px" src="/img/certificates/'+url+'" onclick="demo(\'Img'+i+'\')">' +
+								'</td>' ;
+					}
+							str+='<td>'+btnStr+'</td>'
+							'</tr>';
+				}
+				$("#tboby").html(str);
+				//填充分页数据
+				fillPageData(vo.pageInfo);
+			}
+		});
+	}
+	function loadByStuno(stuno){
+		let pageNum=$("input[name='pageNum']").val();
+		let pageSize=$("select[name='pageSize']").val();
+		sessionStorage["pageNum"]=pageNum;
+		sessionStorage["pageSize"]=pageSize;
+		sessionStorage["stuno"]=stuno;
+		window.location.href="/pages/manager/auditInfo.html";
+	}
+</script>

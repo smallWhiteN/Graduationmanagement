@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/css/pie.css" >
+    <link rel="stylesheet" href="/css/total.css" >
+    <link rel="stylesheet" href="/layui/css/layui.css"    media="all">
+    <link  rel="stylesheet" type="text/css" href="/css/bootstrap.css"></link>
+    <link  rel="stylesheet" type="text/css" href="/css/style.css"></link>
+    <script type="text/javascript" src="/js/jquery-1.12.4.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.js" ></script>
+    <title>去向信息列表</title>
+</head>
+<body>
+<div class="layui-container" style="margin-left: 100px">
+    <div id="head">
+        <form id="selectInfo" class="searchDiv">
+            学院 : <select id="college" name="college" style="width: auto"></select>
+            专业 : <select id="major" name="major" style="width: auto"></select>
+<!--            去向:<select id="direction" name="direction"></select>-->
+            <button type="button" onclick="statistics()" class="btn btn-info">查询</button>
+            <button type="reset" class="btn btn-warning">重置</button>
+        </form>
+    </div>
+    <div id="body">
+        <div id="InformationOfYear layui-input-inline" class="layui-col-xs5">
+            <div id="rate"style="padding: 10px"></div>
+        </div>
+        <div class="layui-col-xs7 layui-input-inline" id="data">
+            <form class="layui-form" id="form">
+
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    $(function (){
+        loadMajor();
+        loadCollege();
+        statistics();
+    })
+    function statistics() {
+        $.ajax({
+            type: "GET",
+            url: "/graduate/rate",
+            data: $("#selectInfo").serialize(),
+            dataType:"json",
+            success: function(vo){
+                let obj=vo.obj;
+                let graph="";
+                let table="";
+                table+='<div class="layui-form-item">\n' +
+                    '                    <label class="layui-form-label">总人数</label>\n' +
+                    '                    <div class="layui-input-inline">\n' +
+                    '                        <input  id="total" type="text" name="total" autocomplete="off" class="layui-input">\n' +
+                    '                    </div>\n' +
+                    '                </div>';
+                if(obj.totalOfQueryVO!=obj.total){
+                    table+='<div class="layui-form-item">\n' +
+                        '                    <label class="layui-form-label">当前条件下的总人数</label>\n' +
+                        '                    <div class="layui-input-inline">\n' +
+                        '                        <input  id="totalOfQueryVO" type="text" name="total" autocomplete="off" class="layui-input">\n' +
+                        '                    </div>\n' +
+                        '                </div>';
+                }
+                graph+='<div class="layui-input-block " style="margin-left: 10px;width: 150px"">\n' +
+                    '                <div style="text-align: center;" id="enrolmentRate" class="pie animate" style="--p:'+(obj.map["升学"]*100/obj.totalOfQueryVO).toFixed(0)+';--c:lightgreen">'+(obj.map["升学"]*100/obj.totalOfQueryVO).toFixed(2)+'%</div>\n' +
+                    '                <div style="text-align: center;">升学率</div>\n' +
+                    '            </div>\n' +
+                    '            <div class="layui-input-block " style="margin-left: 10px;width: 150px">\n' +
+                    '                <div id="employmentRate" class="pie animate" style="--p:'+(obj.map["就业"]*100/obj.totalOfQueryVO).toFixed(0)+';--c:blue">'+(obj.map["就业"]*100/obj.totalOfQueryVO).toFixed(2)+'%</div>\n'+
+                '                       <div style="text-align: center;">就业率</div>\n' +
+                    '            </div>';
+                $("#rate").html(graph);
+                for (let key in obj.map) {
+                    table+='<div class="layui-form-item">' +
+            '                    <label class="layui-form-label " style="width: auto">'+key+'人数</label>' +
+            '                    <div class="layui-input-inline class="layui-col-xs7">\n' +
+            '                        <input type="text" name="total" value="'+obj.map[key] +'" autocomplete="off" class="layui-input">\n' +
+            '                    </div>\n' +
+            '                </div>';
+                }
+                $("#form").html(table);
+                $("#total").val(obj.total);
+                $("#totalOfQueryVO").val(obj.totalOfQueryVO);
+            }
+        });
+    }
+    function loadMajor(){
+        $.ajax({
+            type: "GET",
+            url: "/major/all",
+            data: null,
+            dataType:"json",
+            success: function(vo){
+                let list=vo.list;
+                let str="";
+                str+='<option value="0">请选择专业</option>';
+                for(let i=0;i<list.length;i++){
+                    str+='<option value="'+list[i].id+'">'+list[i].major+'</option>';
+                }
+                $("#major").html(str);
+                //填充分页数据
+            }
+        });
+    }
+    function loadCollege(){
+        $.ajax({
+            type: "GET",
+            url: "/college/all",
+            data: null,
+            dataType:"json",
+            success: function(vo){
+                let list=vo.list;
+                let str="";
+                str+='<option value="0">请选择学院</option>';
+                for(let i=0;i<list.length;i++){
+                    str+='<option value="'+list[i].id+'">'+list[i].college+'</option>';
+                }
+                $("#college").html(str);
+                //填充分页数据
+            }
+        });
+    }
+
+</script>
+</html>

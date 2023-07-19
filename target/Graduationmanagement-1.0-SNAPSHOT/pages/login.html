@@ -1,0 +1,151 @@
+<!--<%&#45;&#45;-->
+<!--  Created by IntelliJ IDEA.-->
+<!--  User: 触殇-->
+<!--  Date: 2023/3/27-->
+<!--  Time: 16:42-->
+<!--  To change this template use File | Settings | File Templates.-->
+<!--&#45;&#45;%>-->
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/login.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="/js/jquery-1.12.4.js"></script>
+    <script type="text/javascript" src="/layui/layui.js"></script>
+
+    <title>登录</title>
+</head>
+<body>
+<div class="loginBox">
+    <h2>login</h2>
+    <div>
+        <div class="item">
+            <input type="radio" name="role" value="manager" autocomplete=“off” style="width:25%;height:50%"><span>管理员</span>
+            <input type="radio" name="role" value="graduate" style="width:25%;height:50%"><span>学生</span>
+        </div>
+        <div class="item">
+            <input id="user" name="user" type="text" required>
+            <label>管理员用户名/学号</label>
+        </div>
+        <div class="item">
+            <input id="password" name="password" type="password" required>
+            <label>密码</label>
+        </div>
+        <button id="submit" class="btn" >登&nbsp;录
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <button id="signUp" class="btn" style="margin-left:20px ">注&nbsp;册
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+</div>
+<script>
+
+    $(function () {
+    $("#submit").click(function (){
+        // layer.load(1, {
+        //     shade: [0.1,'#fff'] //0.1透明度的白色背景
+        // });
+        let user = $("input[name='user']").val();
+        let password = $("input[name='password']").val();
+        let role = $("input[name='role']:checked").val();
+        if(role==null){
+            layer.open({
+                title:'信息',
+                type:0,
+                shadeClose:true,
+                area:['300px', '170px'],
+                content:'<span style="color: black">请选择角色</span>',
+            });
+            return ;
+        }
+        if(user==null || user==='' || password==null || password==''){
+            layer.open({
+                title:'信息',
+                type:0,
+                shadeClose:true,
+                area:['300px', '170px'],
+                content:'<span style="color: black">用户名或密码不能为空</span>',
+            });
+            return;
+        }
+        if(role=="graduate"){
+            loginByGraduate(user, password);
+        }else{
+            loginByManager(user, password);
+        }
+
+    })
+    $("#signUp").click(function (){
+        location.href=('/pages/signUp.html');
+    })
+
+    $(document).keydown(function(event){
+        if(event.keyCode==13){
+            document.getElementById("submit").click();
+        }
+    });
+
+})
+    function loginByGraduate(user, password) {
+        $.ajax({
+            type: "POST",
+            url: "/graduate/login",
+            data: {"stuno":user, "password":password},
+            dataType:"json",
+            success: function(vo){
+                if(vo.code!=200){
+                    layer.open({
+                        title:'信息',
+                        type:0,
+                        shadeClose:true,
+                        area:['300px', '170px'],
+                        content:'<span style="color: black">用户名或密码输入有误</span>',
+                    });
+                    return;
+                }
+
+                sessionStorage["stuno"]=user;
+                sessionStorage["role"]="graduate";
+                location.href=('/pages/graduate/information.html')
+            }
+        });
+    }
+
+    function loginByManager(user, password) {
+        $.ajax({
+            type: "POST",
+            url: "/manager/login",
+            data: {"user":user, "password":password},
+            dataType:"json",
+            success: function(vo){
+                let obj=vo.obj;
+                if(obj==null){
+                    layer.alert('<span style="color: black">用户名或密码错误</span>',{icon:2});return;
+                }
+                sessionStorage["manager"]=obj;
+                sessionStorage["role"]="manager";
+                location.href=('/pages/index.html')
+            },
+            error:function(vo){
+                let obj=vo.obj;
+                alert(vo);
+                alert(obj);
+                if(obj==null){
+                    alert("用户名或密码错误");return;
+                }
+                sessionStorage["manager"]=obj;
+                sessionStorage["role"]="manager";
+                location.href=('/pages/index.html');
+            }
+        });
+    }
+</script>
+</body>
+</html>
