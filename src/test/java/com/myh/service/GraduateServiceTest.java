@@ -35,7 +35,6 @@ public class GraduateServiceTest extends TestCase {
 
     @Test
     public void addGraduate() {
-//        System.out.println("addGraduate");
     }
 
     @Test
